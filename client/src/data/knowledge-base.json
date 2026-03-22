@@ -1,0 +1,1506 @@
+{
+  "version": "1.0",
+  "title": "藥師國考大補帖",
+  "domains": [
+    {
+      "id": "pharmacology",
+      "name": "Pharmacology",
+      "nameTw": "藥理學",
+      "icon": "Pill",
+      "color": "#059669",
+      "subjectKey": "pharm1",
+      "nodes": [
+        {
+          "id": "receptor-pharmacology",
+          "name": "Receptor Pharmacology",
+          "nameTw": "受體藥理學",
+          "tags": ["受體藥理學", "藥理學"],
+          "concept": "藥物透過與受體（receptor）結合產生藥理效應。受體是細胞上能辨識特定化學訊號的蛋白質分子，藥物與受體的交互作用決定了藥物的效力（potency）與效能（efficacy）。",
+          "mechanism": [
+            {"type": "Agonist（作用劑）", "desc": "與受體結合並活化受體，產生最大效應（full efficacy）"},
+            {"type": "Antagonist（拮抗劑）", "desc": "與受體結合但不活化，阻斷 agonist 的作用"},
+            {"type": "Partial agonist（部分作用劑）", "desc": "與受體結合，僅產生部分活化效應"},
+            {"type": "Inverse agonist（反向作用劑）", "desc": "與受體結合，產生與 agonist 相反的效應"}
+          ],
+          "drugList": [
+            {"drug": "Morphine", "category": "Full agonist（μ receptor）", "use": "強效止痛"},
+            {"drug": "Buprenorphine", "category": "Partial agonist（μ receptor）", "use": "鴉片類成癮治療"},
+            {"drug": "Naloxone", "category": "Antagonist（μ receptor）", "use": "鴉片類過量解毒"},
+            {"drug": "Naltrexone", "category": "Antagonist（μ receptor）", "use": "酒精/鴉片依賴"}
+          ],
+          "comparison": {
+            "headers": ["類型", "Efficacy", "代表藥物", "臨床意義"],
+            "rows": [
+              ["Full agonist", "最高", "Morphine", "產生最大效應"],
+              ["Partial agonist", "中等", "Buprenorphine", "有 ceiling effect"],
+              ["Antagonist", "0", "Naloxone", "阻斷作用"],
+              ["Inverse agonist", "負值", "Flumazenil (部分)", "反向效應"]
+            ]
+          },
+          "pitfalls": [
+            "Partial agonist 在 full agonist 存在時，反而會降低效應（因為競爭受體但 efficacy 較低）",
+            "Competitive antagonist 可被高濃度 agonist 克服（右移劑量反應曲線），non-competitive 則不行",
+            "Potency（EC50）與 efficacy（Emax）是不同概念，potency 高不代表 efficacy 高",
+            "Spare receptor 概念：不需要佔據所有受體即可達最大效應"
+          ],
+          "examFocus": [
+            "Efficacy vs Potency 的區別與圖形判讀",
+            "EC50、ED50、LD50 的定義與計算",
+            "Competitive vs Non-competitive antagonism 的劑量反應曲線變化",
+            "Therapeutic index（TI = LD50/ED50）的臨床意義"
+          ]
+        },
+        {
+          "id": "pharmacokinetics",
+          "name": "Pharmacokinetics",
+          "nameTw": "藥物動力學",
+          "tags": ["藥物動力學", "藥理學"],
+          "concept": "研究藥物在體內的吸收（Absorption）、分布（Distribution）、代謝（Metabolism）、排泄（Excretion）四大過程，即 ADME。藥動學決定藥物在體內的濃度變化與作用時間。",
+          "mechanism": [
+            {"type": "Absorption（吸收）", "desc": "藥物從給藥部位進入血液循環的過程，受劑型、pH、血流等影響"},
+            {"type": "Distribution（分布）", "desc": "藥物從血液分布到組織的過程，受蛋白結合率、脂溶性、血腦屏障影響"},
+            {"type": "Metabolism（代謝）", "desc": "藥物在體內被酵素轉化的過程，主要在肝臟，分 Phase I（氧化還原）和 Phase II（結合反應）"},
+            {"type": "Excretion（排泄）", "desc": "藥物及代謝物排出體外的過程，主要經腎臟，部分經膽汁、肺、汗液"}
+          ],
+          "drugList": [
+            {"drug": "Phenytoin", "category": "非線性藥動學", "use": "零級動力學代謝，劑量微調即大幅影響血中濃度"},
+            {"drug": "Warfarin", "category": "高蛋白結合率", "use": "99% 與 albumin 結合，易有交互作用"},
+            {"drug": "Lithium", "category": "窄治療範圍", "use": "需 TDM，腎排泄"},
+            {"drug": "Digoxin", "category": "窄治療範圍", "use": "需 TDM，腎排泄為主"}
+          ],
+          "comparison": {
+            "headers": ["給藥途徑", "Bioavailability", "First-pass effect", "起效速度"],
+            "rows": [
+              ["IV 靜脈注射", "100%", "無", "最快"],
+              ["Oral 口服", "Variable", "有", "中等"],
+              ["Sublingual 舌下", "高", "避開", "快"],
+              ["Transdermal 經皮", "Variable", "避開", "慢"],
+              ["Rectal 直腸", "~50%", "部分避開", "中等"]
+            ]
+          },
+          "pitfalls": [
+            "First-pass effect 不只是肝臟代謝，也包括腸壁代謝",
+            "半衰期（t½）= 0.693/k，達穩態需約 4-5 個半衰期",
+            "非線性藥動學（如 Phenytoin）：小幅增加劑量可能導致血中濃度大幅上升",
+            "Loading dose = Vd × Cp / F，與半衰期無關",
+            "Maintenance dose = CL × Cp / F，與清除率有關"
+          ],
+          "examFocus": [
+            "一室模式 vs 二室模式的藥動學計算",
+            "半衰期、清除率、分布體積的計算與關係",
+            "First-order vs Zero-order elimination 的區別",
+            "Loading dose 與 Maintenance dose 的計算公式",
+            "生體可用率（F）的計算：AUC(oral)/AUC(IV)"
+          ]
+        },
+        {
+          "id": "autonomic-drugs",
+          "name": "Autonomic Drugs",
+          "nameTw": "自律神經藥物",
+          "tags": ["自律神經藥物", "藥理學"],
+          "concept": "自律神經系統分為交感神經（adrenergic）與副交感神經（cholinergic），藥物可模擬或阻斷這兩個系統的作用。Cholinergic 藥物作用於 muscarinic 和 nicotinic 受體，anticholinergic 藥物則阻斷之。",
+          "mechanism": [
+            {"type": "Direct cholinergic agonist", "desc": "直接活化 muscarinic receptor（如 bethanechol、pilocarpine）"},
+            {"type": "Indirect cholinergic agonist（AChE inhibitor）", "desc": "抑制乙醯膽鹼酯酶，增加 ACh 濃度（如 neostigmine、donepezil）"},
+            {"type": "Muscarinic antagonist", "desc": "阻斷 muscarinic receptor（如 atropine、ipratropium）"},
+            {"type": "Ganglionic blocker", "desc": "阻斷 nicotinic receptor（如 mecamylamine）"}
+          ],
+          "drugList": [
+            {"drug": "Bethanechol", "category": "Cholinergic agonist", "use": "術後尿滯留"},
+            {"drug": "Pilocarpine", "category": "Cholinergic agonist", "use": "青光眼（縮瞳）"},
+            {"drug": "Neostigmine", "category": "AChE inhibitor", "use": "重症肌無力"},
+            {"drug": "Donepezil", "category": "AChE inhibitor", "use": "阿茲海默症"},
+            {"drug": "Atropine", "category": "Anticholinergic", "use": "心搏過緩、有機磷中毒"},
+            {"drug": "Ipratropium", "category": "Anticholinergic", "use": "COPD"},
+            {"drug": "Scopolamine", "category": "Anticholinergic", "use": "暈車（motion sickness）"},
+            {"drug": "Oxybutynin", "category": "Anticholinergic", "use": "膀胱過動症"}
+          ],
+          "comparison": {
+            "headers": ["效應", "Cholinergic", "Anticholinergic"],
+            "rows": [
+              ["瞳孔", "Miosis（縮瞳）", "Mydriasis（散瞳）"],
+              ["唾液分泌", "增加 ↑", "減少 ↓"],
+              ["心率", "減慢 ↓", "加快 ↑"],
+              ["支氣管", "收縮", "舒張"],
+              ["腸胃蠕動", "增加 ↑", "減少 ↓"],
+              ["膀胱逼尿肌", "收縮（排尿）", "鬆弛（尿滯留）"],
+              ["汗腺", "增加", "減少"]
+            ]
+          },
+          "pitfalls": [
+            "Bethanechol 對 muscarinic receptor 有選擇性，不作用於 nicotinic receptor",
+            "Atropine 低劑量反而可能造成心率下降（因阻斷 M1 presynaptic autoreceptor）",
+            "Organophosphate 中毒用 atropine + pralidoxime（2-PAM）治療",
+            "Ipratropium 是四級銨，不易通過血腦屏障，CNS 副作用少"
+          ],
+          "examFocus": [
+            "Cholinergic vs Anticholinergic 的生理效應對比",
+            "有機磷中毒的治療方案",
+            "各種 AChE inhibitor 的比較（可逆 vs 不可逆）",
+            "Anticholinergic 的臨床應用與副作用"
+          ]
+        },
+        {
+          "id": "adrenergic-drugs",
+          "name": "Adrenergic Drugs",
+          "nameTw": "腎上腺素能藥物",
+          "tags": ["自律神經藥物", "藥理學"],
+          "concept": "腎上腺素能藥物作用於交感神經系統的 α 和 β 受體。α1 受體主要在血管平滑肌，β1 在心臟，β2 在支氣管和子宮平滑肌。",
+          "mechanism": [
+            {"type": "α1 agonist", "desc": "血管收縮、升壓（phenylephrine）"},
+            {"type": "α2 agonist", "desc": "中樞性降壓（clonidine）"},
+            {"type": "β1 agonist", "desc": "增加心率與收縮力（dobutamine）"},
+            {"type": "β2 agonist", "desc": "支氣管擴張（albuterol、salmeterol）"},
+            {"type": "Non-selective α blocker", "desc": "降壓（phentolamine）"},
+            {"type": "Selective α1 blocker", "desc": "降壓、BPH（prazosin、tamsulosin）"},
+            {"type": "Non-selective β blocker", "desc": "降壓、抗心律不整（propranolol）"},
+            {"type": "Selective β1 blocker", "desc": "降壓、心衰竭（metoprolol、atenolol）"}
+          ],
+          "drugList": [
+            {"drug": "Epinephrine", "category": "α+β agonist", "use": "過敏性休克、心跳停止"},
+            {"drug": "Norepinephrine", "category": "α>β1 agonist", "use": "敗血性休克升壓"},
+            {"drug": "Phenylephrine", "category": "α1 agonist", "use": "鼻充血、升壓"},
+            {"drug": "Albuterol", "category": "β2 agonist（SABA）", "use": "急性氣喘"},
+            {"drug": "Salmeterol", "category": "β2 agonist（LABA）", "use": "氣喘維持治療"},
+            {"drug": "Dobutamine", "category": "β1 agonist", "use": "急性心衰竭"},
+            {"drug": "Metoprolol", "category": "Selective β1 blocker", "use": "高血壓、心衰竭"},
+            {"drug": "Propranolol", "category": "Non-selective β blocker", "use": "高血壓、偏頭痛、甲亢"}
+          ],
+          "comparison": {
+            "headers": ["受體", "效應", "代表藥物"],
+            "rows": [
+              ["α1", "血管收縮、升壓", "Phenylephrine"],
+              ["α2", "中樞降壓、減少 NE 釋放", "Clonidine"],
+              ["β1", "心率↑、收縮力↑", "Dobutamine"],
+              ["β2", "支氣管擴張、子宮鬆弛", "Albuterol"],
+              ["β3", "脂肪分解", "Mirabegron"]
+            ]
+          },
+          "pitfalls": [
+            "Non-selective β blocker（propranolol）禁用於氣喘患者（會阻斷 β2 造成支氣管收縮）",
+            "Epinephrine reversal：在 α blocker 存在下，epinephrine 的升壓作用反轉為降壓",
+            "Pheochromocytoma 手術前需先用 α blocker 再用 β blocker，順序不可反",
+            "β blocker 突然停藥可能造成 rebound hypertension"
+          ],
+          "examFocus": [
+            "各受體亞型的生理效應與對應藥物",
+            "Epinephrine reversal 現象的機制",
+            "β blocker 的選擇性差異與臨床應用",
+            "Pheochromocytoma 的藥物治療順序"
+          ]
+        },
+        {
+          "id": "cardiovascular-drugs",
+          "name": "Cardiovascular Drugs",
+          "nameTw": "心血管藥物",
+          "tags": ["心血管藥物", "藥理學"],
+          "concept": "心血管藥物涵蓋降壓藥、抗心律不整藥、抗心衰竭藥、降血脂藥等。RAAS 系統（Renin-Angiotensin-Aldosterone System）是高血壓治療的核心靶點。",
+          "mechanism": [
+            {"type": "ACE inhibitor", "desc": "抑制 ACE，減少 Angiotensin II 生成，降低血壓與心臟負荷"},
+            {"type": "ARB", "desc": "阻斷 AT1 receptor，效果類似 ACEI 但不引起乾咳"},
+            {"type": "CCB", "desc": "阻斷 L-type Ca²⁺ channel，血管擴張（DHP）或減慢心率（non-DHP）"},
+            {"type": "Diuretics", "desc": "增加尿液排出，減少血容量"},
+            {"type": "β-blocker", "desc": "減慢心率、降低心輸出量"}
+          ],
+          "drugList": [
+            {"drug": "Captopril", "category": "ACE inhibitor", "use": "高血壓、心衰竭、糖尿病腎病"},
+            {"drug": "Enalapril", "category": "ACE inhibitor", "use": "高血壓、心衰竭"},
+            {"drug": "Losartan", "category": "ARB", "use": "高血壓（ACEI 不耐受者）"},
+            {"drug": "Valsartan", "category": "ARB", "use": "高血壓、心衰竭"},
+            {"drug": "Amlodipine", "category": "DHP CCB", "use": "高血壓"},
+            {"drug": "Verapamil", "category": "Non-DHP CCB", "use": "心律不整、高血壓"},
+            {"drug": "Diltiazem", "category": "Non-DHP CCB", "use": "心律不整、高血壓"},
+            {"drug": "Hydrochlorothiazide", "category": "Thiazide diuretic", "use": "高血壓"},
+            {"drug": "Furosemide", "category": "Loop diuretic", "use": "水腫、心衰竭"},
+            {"drug": "Spironolactone", "category": "K⁺-sparing diuretic", "use": "心衰竭、肝硬化腹水"}
+          ],
+          "comparison": {
+            "headers": ["藥物類別", "機制", "乾咳", "高血鉀", "適應症特色"],
+            "rows": [
+              ["ACEI", "↓ Ang II 生成", "有（bradykinin 累積）", "有風險", "糖尿病腎病首選"],
+              ["ARB", "阻斷 AT1", "無", "有風險", "ACEI 不耐受替代"],
+              ["DHP CCB", "血管擴張", "無", "無", "老年高血壓"],
+              ["Non-DHP CCB", "減慢心率", "無", "無", "心律不整"],
+              ["Thiazide", "遠曲小管 Na⁺/Cl⁻", "無", "低血鉀", "輕度高血壓"],
+              ["Loop diuretic", "亨利氏環 Na⁺/K⁺/2Cl⁻", "無", "低血鉀", "急性水腫"]
+            ]
+          },
+          "pitfalls": [
+            "ACEI 禁用於懷孕（致畸胎），雙側腎動脈狹窄",
+            "ACEI + ARB 不建議合併使用（增加高血鉀與腎損傷風險）",
+            "Non-DHP CCB（verapamil）不可與 β-blocker 合用（嚴重心搏過緩）",
+            "Thiazide 可能造成低血鉀、高血鈣、高尿酸、高血糖",
+            "Loop diuretic 的耳毒性（尤其與 aminoglycoside 合用時）"
+          ],
+          "examFocus": [
+            "ACEI vs ARB 的比較（機制、副作用、禁忌症）",
+            "DHP vs Non-DHP CCB 的差異",
+            "各類利尿劑的作用部位與電解質影響",
+            "Vaughan-Williams 抗心律不整藥物分類"
+          ]
+        },
+        {
+          "id": "cns-drugs",
+          "name": "CNS Drugs",
+          "nameTw": "中樞神經藥物",
+          "tags": ["中樞神經藥物", "藥理學"],
+          "concept": "中樞神經藥物作用於腦部與脊髓，包括鎮靜安眠藥、抗癲癇藥、抗精神病藥、抗憂鬱藥、帕金森氏症藥物等。主要透過調節神經傳導物質（GABA、dopamine、serotonin、norepinephrine）發揮作用。",
+          "mechanism": [
+            {"type": "Benzodiazepine", "desc": "增強 GABA-A receptor 功能（增加 Cl⁻ channel 開啟頻率）"},
+            {"type": "Barbiturate", "desc": "增強 GABA-A receptor 功能（延長 Cl⁻ channel 開啟時間）"},
+            {"type": "Z-drugs", "desc": "選擇性作用於 GABA-A α1 subunit（如 zolpidem）"},
+            {"type": "Antiepileptic", "desc": "抑制 Na⁺ channel、增強 GABA、阻斷 Ca²⁺ channel 等"},
+            {"type": "Antipsychotic", "desc": "阻斷 D2 receptor（典型）或 D2+5-HT2A（非典型）"}
+          ],
+          "drugList": [
+            {"drug": "Diazepam", "category": "Benzodiazepine", "use": "焦慮、癲癇急救、肌肉鬆弛"},
+            {"drug": "Zolpidem", "category": "Z-drug", "use": "失眠（短效）"},
+            {"drug": "Phenytoin", "category": "Antiepileptic", "use": "癲癇（Na⁺ channel blocker）"},
+            {"drug": "Valproic acid", "category": "Antiepileptic", "use": "廣效型抗癲癇"},
+            {"drug": "Haloperidol", "category": "Typical antipsychotic", "use": "精神分裂症"},
+            {"drug": "Clozapine", "category": "Atypical antipsychotic", "use": "難治型精神分裂症"},
+            {"drug": "Levodopa/Carbidopa", "category": "Dopamine precursor", "use": "帕金森氏症"}
+          ],
+          "comparison": {
+            "headers": ["藥物類別", "機制", "主要副作用", "特色"],
+            "rows": [
+              ["Benzodiazepine", "↑ GABA-A 頻率", "嗜睡、依賴", "有解毒劑 flumazenil"],
+              ["Barbiturate", "↑ GABA-A 時間", "呼吸抑制、致死", "無安全解毒劑"],
+              ["Z-drugs", "α1 selective", "夢遊、幻覺", "較少肌肉鬆弛"],
+              ["Typical antipsychotic", "D2 block", "EPS、高泌乳素", "高效價=高 EPS"],
+              ["Atypical antipsychotic", "D2+5HT2A", "代謝症候群", "較少 EPS"]
+            ]
+          },
+          "pitfalls": [
+            "Benzodiazepine 增加頻率（frequency），Barbiturate 增加時間（duration）——這是最常考的區別",
+            "Flumazenil 是 BZD 的解毒劑，但不能用於 barbiturate 過量",
+            "Phenytoin 為非線性藥動學，劑量調整需特別小心",
+            "Clozapine 最嚴重副作用是 agranulocytosis，需定期監測 WBC",
+            "Lithium 用於躁鬱症，但治療範圍窄（0.6-1.2 mEq/L），需監測腎功能與甲狀腺"
+          ],
+          "examFocus": [
+            "BZD vs Barbiturate 的 GABA 機制差異",
+            "抗癲癇藥物的選擇（依癲癇類型）",
+            "典型 vs 非典型抗精神病藥的比較",
+            "帕金森氏症藥物的機制與組合治療"
+          ]
+        },
+        {
+          "id": "anti-infective-drugs",
+          "name": "Anti-infective Drugs",
+          "nameTw": "抗感染藥物",
+          "tags": ["抗感染藥物", "藥理學"],
+          "concept": "抗感染藥物包括抗生素、抗病毒藥、抗黴菌藥、抗寄生蟲藥。抗生素依機制可分為：抑制細胞壁合成、抑制蛋白質合成、抑制核酸合成、抑制葉酸合成等。",
+          "mechanism": [
+            {"type": "β-lactam（細胞壁合成抑制）", "desc": "結合 PBP，抑制 peptidoglycan 交聯"},
+            {"type": "Aminoglycoside（30S 抑制）", "desc": "結合 30S ribosome，造成 mRNA 誤讀"},
+            {"type": "Macrolide（50S 抑制）", "desc": "結合 50S ribosome，抑制 translocation"},
+            {"type": "Fluoroquinolone（DNA 合成抑制）", "desc": "抑制 DNA gyrase 與 topoisomerase IV"},
+            {"type": "Sulfonamide（葉酸合成抑制）", "desc": "抑制 dihydropteroate synthase"}
+          ],
+          "drugList": [
+            {"drug": "Amoxicillin", "category": "Penicillin", "use": "上呼吸道感染"},
+            {"drug": "Ceftriaxone", "category": "3rd gen Cephalosporin", "use": "腦膜炎、淋病"},
+            {"drug": "Azithromycin", "category": "Macrolide", "use": "非典型肺炎、披衣菌"},
+            {"drug": "Gentamicin", "category": "Aminoglycoside", "use": "嚴重 G(-) 感染"},
+            {"drug": "Ciprofloxacin", "category": "Fluoroquinolone", "use": "泌尿道感染"},
+            {"drug": "Vancomycin", "category": "Glycopeptide", "use": "MRSA"},
+            {"drug": "Metronidazole", "category": "Nitroimidazole", "use": "厭氧菌、C. diff"}
+          ],
+          "comparison": {
+            "headers": ["抗生素類別", "機制", "主要副作用", "覆蓋範圍"],
+            "rows": [
+              ["β-lactam", "細胞壁合成", "過敏反應", "G(+) 為主"],
+              ["Aminoglycoside", "30S ribosome", "腎毒性、耳毒性", "G(-) 為主"],
+              ["Macrolide", "50S ribosome", "QT 延長、GI", "非典型病原"],
+              ["Fluoroquinolone", "DNA gyrase", "肌腱斷裂、QT", "廣效"],
+              ["Glycopeptide", "細胞壁合成", "Red man syndrome", "G(+) 含 MRSA"]
+            ]
+          },
+          "pitfalls": [
+            "Aminoglycoside 與 loop diuretic 合用增加耳毒性",
+            "Fluoroquinolone 禁用於兒童與孕婦（軟骨毒性）",
+            "Vancomycin 快速靜注會造成 Red man syndrome（非過敏，是 histamine 釋放）",
+            "Cephalosporin 與 penicillin 有交叉過敏（約 5-10%）",
+            "Metronidazole 禁止與酒精併用（disulfiram-like reaction）"
+          ],
+          "examFocus": [
+            "抗生素的作用機制分類",
+            "各代 Cephalosporin 的覆蓋範圍差異",
+            "抗生素的主要副作用與禁忌症",
+            "抗藥性機制（β-lactamase、MRSA、VRE）"
+          ]
+        },
+        {
+          "id": "endocrine-drugs",
+          "name": "Endocrine Drugs",
+          "nameTw": "內分泌藥物",
+          "tags": ["內分泌藥物", "藥理學"],
+          "concept": "內分泌藥物作用於荷爾蒙系統，包括糖尿病藥物、甲狀腺藥物、腎上腺皮質激素、性荷爾蒙等。胰島素與口服降血糖藥是最常考的重點。",
+          "mechanism": [
+            {"type": "Insulin", "desc": "促進細胞攝取葡萄糖，降低血糖"},
+            {"type": "Sulfonylurea", "desc": "刺激胰島 β 細胞分泌胰島素"},
+            {"type": "Metformin", "desc": "減少肝臟糖質新生，增加胰島素敏感性"},
+            {"type": "SGLT2 inhibitor", "desc": "抑制腎臟近曲小管葡萄糖再吸收"},
+            {"type": "GLP-1 agonist", "desc": "模擬腸泌素，促進胰島素分泌、抑制升糖素"}
+          ],
+          "drugList": [
+            {"drug": "Insulin glargine", "category": "Long-acting insulin", "use": "基礎胰島素"},
+            {"drug": "Insulin lispro", "category": "Rapid-acting insulin", "use": "餐前注射"},
+            {"drug": "Metformin", "category": "Biguanide", "use": "T2DM 首選"},
+            {"drug": "Glipizide", "category": "Sulfonylurea", "use": "T2DM"},
+            {"drug": "Dapagliflozin", "category": "SGLT2 inhibitor", "use": "T2DM、心衰竭"},
+            {"drug": "Semaglutide", "category": "GLP-1 agonist", "use": "T2DM、減重"},
+            {"drug": "Levothyroxine", "category": "Thyroid hormone", "use": "甲狀腺功能低下"},
+            {"drug": "Methimazole", "category": "Anti-thyroid", "use": "甲狀腺功能亢進"}
+          ],
+          "comparison": {
+            "headers": ["胰島素類型", "起效時間", "持續時間", "代表藥物"],
+            "rows": [
+              ["Rapid-acting", "15 min", "3-5 hr", "Lispro, Aspart"],
+              ["Short-acting", "30 min", "5-8 hr", "Regular insulin"],
+              ["Intermediate", "1-2 hr", "12-18 hr", "NPH"],
+              ["Long-acting", "1-2 hr", "24 hr", "Glargine, Detemir"],
+              ["Ultra-long", "1-2 hr", "42 hr", "Degludec"]
+            ]
+          },
+          "pitfalls": [
+            "Metformin 最嚴重副作用是乳酸酸中毒（lactic acidosis），腎功能不全時禁用",
+            "SGLT2 inhibitor 可能造成泌尿道感染和酮酸中毒（euglycemic DKA）",
+            "Sulfonylurea 最常見副作用是低血糖和體重增加",
+            "Insulin glargine 不可與其他胰島素混合注射",
+            "Methimazole 禁用於懷孕第一期（致畸胎），改用 PTU"
+          ],
+          "examFocus": [
+            "各類胰島素的起效時間與持續時間比較",
+            "口服降血糖藥的機制與副作用比較",
+            "T2DM 的階梯式治療策略",
+            "甲狀腺藥物的選擇與禁忌"
+          ]
+        },
+        {
+          "id": "respiratory-drugs",
+          "name": "Respiratory Drugs",
+          "nameTw": "呼吸系統藥物",
+          "tags": ["呼吸系統藥物", "藥理學"],
+          "concept": "呼吸系統藥物主要用於治療氣喘與 COPD，包括支氣管擴張劑、抗發炎藥物、黏液溶解劑等。氣喘治療遵循階梯式治療原則。",
+          "mechanism": [
+            {"type": "SABA（短效 β2 agonist）", "desc": "快速支氣管擴張，急性緩解用"},
+            {"type": "LABA（長效 β2 agonist）", "desc": "長效支氣管擴張，維持治療"},
+            {"type": "ICS（吸入型類固醇）", "desc": "抗發炎，氣喘維持治療首選"},
+            {"type": "LAMA（長效 muscarinic antagonist）", "desc": "長效支氣管擴張，COPD 首選"},
+            {"type": "Leukotriene modifier", "desc": "阻斷 leukotriene 的發炎與支氣管收縮作用"}
+          ],
+          "drugList": [
+            {"drug": "Albuterol (Salbutamol)", "category": "SABA", "use": "急性氣喘發作"},
+            {"drug": "Salmeterol", "category": "LABA", "use": "氣喘/COPD 維持"},
+            {"drug": "Fluticasone", "category": "ICS", "use": "氣喘維持治療"},
+            {"drug": "Tiotropium", "category": "LAMA", "use": "COPD 維持"},
+            {"drug": "Montelukast", "category": "Leukotriene antagonist", "use": "氣喘輔助治療"},
+            {"drug": "Omalizumab", "category": "Anti-IgE", "use": "嚴重過敏性氣喘"},
+            {"drug": "Theophylline", "category": "Methylxanthine", "use": "氣喘（二線）"}
+          ],
+          "comparison": {
+            "headers": ["藥物類別", "起效速度", "持續時間", "主要用途"],
+            "rows": [
+              ["SABA", "快（5 min）", "4-6 hr", "急性緩解"],
+              ["LABA", "慢", "12 hr", "維持治療"],
+              ["ICS", "慢（數天）", "持續使用", "抗發炎維持"],
+              ["LAMA", "慢", "24 hr", "COPD 維持"],
+              ["Leukotriene modifier", "慢", "24 hr", "輔助治療"]
+            ]
+          },
+          "pitfalls": [
+            "LABA 不可單獨用於氣喘（需合併 ICS），否則增加死亡風險",
+            "ICS 的局部副作用：口腔念珠菌感染、聲音沙啞（用後漱口可預防）",
+            "Theophylline 治療範圍窄（10-20 μg/mL），需 TDM",
+            "Montelukast 有精神神經副作用（FDA black box warning）"
+          ],
+          "examFocus": [
+            "氣喘的階梯式治療策略",
+            "SABA vs LABA 的臨床使用時機",
+            "COPD vs 氣喘的藥物治療差異",
+            "ICS 的副作用與預防措施"
+          ]
+        },
+        {
+          "id": "anticancer-drugs",
+          "name": "Anticancer Drugs",
+          "nameTw": "抗癌藥物",
+          "tags": ["抗癌藥物", "藥理學"],
+          "concept": "抗癌藥物依機制分為：烷化劑、抗代謝物、拓撲異構酶抑制劑、微管抑制劑、標靶治療、免疫治療等。",
+          "mechanism": [
+            {"type": "Alkylating agent", "desc": "與 DNA 交聯，阻止複製"},
+            {"type": "Antimetabolite", "desc": "模擬正常代謝物，干擾 DNA/RNA 合成"},
+            {"type": "Topoisomerase inhibitor", "desc": "抑制 DNA 拓撲異構酶"},
+            {"type": "Microtubule inhibitor", "desc": "干擾紡錘體功能，阻止有絲分裂"},
+            {"type": "Tyrosine kinase inhibitor", "desc": "阻斷癌細胞生長訊號"}
+          ],
+          "drugList": [
+            {"drug": "Cyclophosphamide", "category": "Alkylating agent", "use": "多種癌症、自體免疫"},
+            {"drug": "5-Fluorouracil", "category": "Antimetabolite", "use": "大腸癌、乳癌"},
+            {"drug": "Methotrexate", "category": "Antimetabolite", "use": "白血病、RA"},
+            {"drug": "Doxorubicin", "category": "Topoisomerase II inhibitor", "use": "乳癌、淋巴瘤"},
+            {"drug": "Paclitaxel", "category": "Microtubule stabilizer", "use": "卵巢癌、乳癌"},
+            {"drug": "Vincristine", "category": "Microtubule destabilizer", "use": "白血病、淋巴瘤"},
+            {"drug": "Imatinib", "category": "TKI（BCR-ABL）", "use": "CML"},
+            {"drug": "Trastuzumab", "category": "Anti-HER2", "use": "HER2+ 乳癌"}
+          ],
+          "comparison": {
+            "headers": ["藥物", "機制", "特殊毒性", "解救藥"],
+            "rows": [
+              ["Cyclophosphamide", "DNA 交聯", "出血性膀胱炎", "Mesna"],
+              ["Methotrexate", "抑制 DHFR", "骨髓抑制、黏膜炎", "Leucovorin"],
+              ["Doxorubicin", "Topo II 抑制", "心臟毒性（累積劑量）", "Dexrazoxane"],
+              ["Cisplatin", "DNA 交聯", "腎毒性、耳毒性", "Amifostine"],
+              ["Vincristine", "微管去穩定", "周邊神經毒性", "無特效解救"]
+            ]
+          },
+          "pitfalls": [
+            "Doxorubicin 的心臟毒性與累積劑量相關（lifetime dose limit）",
+            "Methotrexate 高劑量後需 leucovorin rescue",
+            "Cyclophosphamide 的出血性膀胱炎用 mesna 預防",
+            "Vincristine 是 vinca alkaloid（去穩定微管），Paclitaxel 是 taxane（穩定微管）——方向相反"
+          ],
+          "examFocus": [
+            "抗癌藥物的機制分類",
+            "各藥物的特殊毒性與解救藥物",
+            "Cell cycle specific vs non-specific 藥物",
+            "標靶治療藥物的靶點與適應症"
+          ]
+        },
+        {
+          "id": "antiinflammatory-drugs",
+          "name": "Anti-inflammatory Drugs",
+          "nameTw": "抗發炎藥物",
+          "tags": ["抗發炎藥物", "藥理學"],
+          "concept": "抗發炎藥物包括 NSAIDs、COX-2 選擇性抑制劑、類固醇、DMARDs 等。NSAIDs 透過抑制 cyclooxygenase（COX）減少 prostaglandin 合成。",
+          "mechanism": [
+            {"type": "Non-selective NSAIDs", "desc": "抑制 COX-1 和 COX-2，減少 PG 合成"},
+            {"type": "COX-2 selective", "desc": "選擇性抑制 COX-2，減少 GI 副作用"},
+            {"type": "Corticosteroid", "desc": "抑制 phospholipase A2，廣效抗發炎"},
+            {"type": "DMARDs", "desc": "疾病修飾抗風濕藥，延緩關節破壞"}
+          ],
+          "drugList": [
+            {"drug": "Aspirin", "category": "Non-selective NSAID", "use": "止痛、抗血小板"},
+            {"drug": "Ibuprofen", "category": "Non-selective NSAID", "use": "止痛、退燒"},
+            {"drug": "Celecoxib", "category": "COX-2 selective", "use": "關節炎（GI 風險低）"},
+            {"drug": "Prednisone", "category": "Corticosteroid", "use": "多種發炎/免疫疾病"},
+            {"drug": "Methotrexate", "category": "DMARD", "use": "RA 首選"},
+            {"drug": "Colchicine", "category": "Anti-gout", "use": "急性痛風"}
+          ],
+          "comparison": {
+            "headers": ["藥物類別", "COX-1 抑制", "COX-2 抑制", "GI 風險", "CV 風險"],
+            "rows": [
+              ["Aspirin", "強", "弱", "高", "保護（低劑量）"],
+              ["Ibuprofen", "中", "中", "中", "中"],
+              ["Celecoxib", "弱", "強", "低", "較高"],
+              ["Corticosteroid", "N/A", "N/A", "潰瘍風險", "N/A"]
+            ]
+          },
+          "pitfalls": [
+            "Aspirin 低劑量（75-100 mg）抗血小板，高劑量才有抗發炎效果",
+            "COX-2 inhibitor 減少 GI 副作用但增加心血管風險",
+            "NSAIDs 禁用於腎功能不全（減少腎臟 PG，降低腎血流）",
+            "Aspirin 禁用於兒童病毒感染（Reye syndrome 風險）"
+          ],
+          "examFocus": [
+            "COX-1 vs COX-2 的生理功能差異",
+            "NSAIDs 的 GI 與 CV 風險比較",
+            "Aspirin 的劑量依賴效應",
+            "痛風的急性與慢性治療藥物"
+          ]
+        },
+        {
+          "id": "blood-drugs",
+          "name": "Blood Drugs",
+          "nameTw": "血液藥物",
+          "tags": ["血液藥物", "藥理學"],
+          "concept": "血液藥物包括抗凝血劑、抗血小板藥、血栓溶解劑、造血生長因子等。抗凝血治療是心血管疾病預防的重要環節。",
+          "mechanism": [
+            {"type": "Warfarin", "desc": "抑制 vitamin K epoxide reductase，減少凝血因子 II、VII、IX、X 合成"},
+            {"type": "Heparin", "desc": "活化 antithrombin III，抑制 thrombin 和 factor Xa"},
+            {"type": "DOAC", "desc": "直接抑制 thrombin（dabigatran）或 factor Xa（rivaroxaban、apixaban）"},
+            {"type": "Antiplatelet", "desc": "抑制血小板聚集（aspirin 抑制 COX-1，clopidogrel 抑制 P2Y12）"}
+          ],
+          "drugList": [
+            {"drug": "Warfarin", "category": "VKA", "use": "AF、機械瓣膜"},
+            {"drug": "Heparin (UFH)", "category": "Indirect thrombin inhibitor", "use": "急性抗凝"},
+            {"drug": "Enoxaparin", "category": "LMWH", "use": "DVT 預防/治療"},
+            {"drug": "Rivaroxaban", "category": "Factor Xa inhibitor", "use": "AF、DVT"},
+            {"drug": "Dabigatran", "category": "Direct thrombin inhibitor", "use": "AF"},
+            {"drug": "Clopidogrel", "category": "P2Y12 inhibitor", "use": "ACS、支架後"},
+            {"drug": "Aspirin", "category": "COX-1 inhibitor", "use": "抗血小板"}
+          ],
+          "comparison": {
+            "headers": ["藥物", "監測", "解毒劑", "腎排泄"],
+            "rows": [
+              ["Warfarin", "INR", "Vitamin K / FFP", "肝代謝"],
+              ["Heparin", "aPTT", "Protamine", "腎"],
+              ["Rivaroxaban", "不需常規", "Andexanet alfa", "腎+肝"],
+              ["Dabigatran", "不需常規", "Idarucizumab", "80% 腎"]
+            ]
+          },
+          "pitfalls": [
+            "Warfarin 與眾多藥物/食物有交互作用（CYP2C9 代謝）",
+            "Heparin-induced thrombocytopenia（HIT）是嚴重併發症",
+            "Dabigatran 腎功能不全時需減量或禁用（80% 腎排泄）",
+            "DOAC 不適用於機械心臟瓣膜患者"
+          ],
+          "examFocus": [
+            "Warfarin vs DOAC 的比較",
+            "各抗凝血劑的監測指標與解毒劑",
+            "Heparin vs LMWH 的差異",
+            "雙重抗血小板治療（DAPT）的適應症"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medicinal-chemistry",
+      "name": "Medicinal Chemistry",
+      "nameTw": "藥物化學",
+      "icon": "Atom",
+      "color": "#059669",
+      "subjectKey": "pharm1",
+      "nodes": [
+        {
+          "id": "drug-metabolism-chemistry",
+          "name": "Drug Metabolism",
+          "nameTw": "藥物化學",
+          "tags": ["藥物化學"],
+          "concept": "藥物化學研究藥物的化學結構與藥理活性的關係（SAR），以及藥物在體內的代謝轉化。Phase I 反應主要由 CYP450 酵素催化，Phase II 為結合反應。",
+          "mechanism": [
+            {"type": "Phase I（功能化反應）", "desc": "氧化、還原、水解，引入或暴露功能基團（-OH, -NH2, -COOH）"},
+            {"type": "Phase II（結合反應）", "desc": "Glucuronidation、Sulfation、Acetylation、Glutathione conjugation"},
+            {"type": "CYP3A4", "desc": "代謝最多藥物的 CYP450 亞型（約 50% 藥物）"},
+            {"type": "CYP2D6", "desc": "代謝許多精神科藥物，有基因多態性"}
+          ],
+          "drugList": [
+            {"drug": "Codeine → Morphine", "category": "CYP2D6 代謝活化", "use": "前驅藥物活化"},
+            {"drug": "Acetaminophen → NAPQI", "category": "CYP2E1 毒性代謝物", "use": "肝毒性機制"},
+            {"drug": "Clopidogrel", "category": "CYP2C19 活化", "use": "前驅藥物"},
+            {"drug": "Omeprazole", "category": "CYP2C19 代謝", "use": "PPI"}
+          ],
+          "comparison": {
+            "headers": ["Phase", "反應類型", "酵素", "結果"],
+            "rows": [
+              ["Phase I", "氧化", "CYP450", "增加極性"],
+              ["Phase I", "還原", "Reductase", "增加極性"],
+              ["Phase I", "水解", "Esterase", "增加極性"],
+              ["Phase II", "Glucuronidation", "UGT", "大幅增加水溶性"],
+              ["Phase II", "Sulfation", "SULT", "增加水溶性"],
+              ["Phase II", "Acetylation", "NAT", "可能降低水溶性"]
+            ]
+          },
+          "pitfalls": [
+            "Acetaminophen 過量時 glutathione 耗盡，NAPQI 累積造成肝壞死（解毒劑：N-acetylcysteine）",
+            "CYP2D6 poor metabolizer 使用 codeine 無效（無法轉化為 morphine）",
+            "CYP2D6 ultra-rapid metabolizer 使用 codeine 可能中毒",
+            "Grapefruit juice 抑制 CYP3A4，增加藥物血中濃度"
+          ],
+          "examFocus": [
+            "Phase I vs Phase II 代謝反應的比較",
+            "主要 CYP450 亞型與其代謝的藥物",
+            "Prodrug 的活化機制",
+            "藥物結構與代謝途徑的關係（SAR）"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pharmaceutical-analysis",
+      "name": "Pharmaceutical Analysis",
+      "nameTw": "藥物分析",
+      "icon": "Microscope",
+      "color": "#0891b2",
+      "subjectKey": "pharm2",
+      "nodes": [
+        {
+          "id": "chromatography",
+          "name": "Chromatography",
+          "nameTw": "層析法",
+          "tags": ["層析法", "藥物分析"],
+          "concept": "層析法是藥物分析最重要的分離技術，利用分析物在固定相與流動相之間分配係數的差異進行分離。HPLC 是藥物分析最常用的層析法。",
+          "mechanism": [
+            {"type": "HPLC（高效液相層析）", "desc": "液體流動相，高壓驅動，最常用於藥物定量分析"},
+            {"type": "GC（氣相層析）", "desc": "氣體流動相，適用於揮發性化合物"},
+            {"type": "TLC（薄層層析）", "desc": "簡易定性分析，用於中藥鑑定"},
+            {"type": "Ion exchange", "desc": "依離子電荷分離"},
+            {"type": "Size exclusion", "desc": "依分子大小分離（蛋白質）"}
+          ],
+          "drugList": [
+            {"drug": "Reverse phase HPLC", "category": "C18 column", "use": "大多數藥物定量"},
+            {"drug": "Normal phase HPLC", "category": "Silica column", "use": "極性化合物"},
+            {"drug": "GC-MS", "category": "GC + 質譜", "use": "毒物分析、揮發物"},
+            {"drug": "UPLC", "category": "超高效液相", "use": "快速高解析分析"}
+          ],
+          "comparison": {
+            "headers": ["方法", "流動相", "適用對象", "偵測器"],
+            "rows": [
+              ["HPLC", "液體", "非揮發性藥物", "UV, DAD, MS"],
+              ["GC", "氣體（He, N2）", "揮發性化合物", "FID, MS"],
+              ["TLC", "液體", "定性篩檢", "UV lamp"],
+              ["CE", "電解質溶液", "帶電分子", "UV, MS"]
+            ]
+          },
+          "pitfalls": [
+            "Reverse phase 用非極性固定相（C18）+ 極性流動相，極性越強越先沖出",
+            "Normal phase 則相反：極性越弱越先沖出",
+            "Resolution（Rs）= 2(tR2-tR1)/(W1+W2)，Rs > 1.5 為基線分離",
+            "Theoretical plate number（N）越大，分離效率越好"
+          ],
+          "examFocus": [
+            "HPLC 的原理與操作參數",
+            "Reverse phase vs Normal phase 的差異",
+            "Resolution 的計算與影響因素",
+            "GC 與 HPLC 的適用範圍比較"
+          ]
+        },
+        {
+          "id": "spectroscopy",
+          "name": "Spectroscopy",
+          "nameTw": "光譜分析",
+          "tags": ["光譜分析", "藥物分析"],
+          "concept": "光譜分析利用物質與電磁波的交互作用來鑑定和定量藥物。不同光譜方法提供不同的結構資訊。",
+          "mechanism": [
+            {"type": "UV-Vis", "desc": "測量紫外-可見光吸收，用於定量分析（Beer-Lambert law）"},
+            {"type": "IR", "desc": "測量紅外光吸收，鑑定官能基"},
+            {"type": "NMR", "desc": "測量核磁共振，確定分子結構"},
+            {"type": "Mass Spectrometry", "desc": "測量質荷比（m/z），確定分子量與結構"}
+          ],
+          "drugList": [
+            {"drug": "UV 分光光度計", "category": "定量", "use": "藥物含量測定"},
+            {"drug": "FTIR", "category": "定性", "use": "官能基鑑定"},
+            {"drug": "¹H-NMR", "category": "結構", "use": "有機結構確認"},
+            {"drug": "LC-MS/MS", "category": "定量+定性", "use": "生物檢體分析"}
+          ],
+          "comparison": {
+            "headers": ["方法", "原理", "提供資訊", "靈敏度"],
+            "rows": [
+              ["UV-Vis", "電子躍遷", "共軛系統、濃度", "中"],
+              ["IR", "分子振動", "官能基", "中"],
+              ["NMR", "核自旋", "完整結構", "低"],
+              ["MS", "離子化", "分子量、碎片", "高"],
+              ["Fluorescence", "螢光發射", "特定化合物", "極高"]
+            ]
+          },
+          "pitfalls": [
+            "Beer-Lambert law：A = εbc，只在低濃度時線性",
+            "UV 吸收需要共軛系統（chromophore），飽和烴無 UV 吸收",
+            "IR 的指紋區（fingerprint region）每個化合物獨特",
+            "NMR 的 chemical shift 受電子密度影響（去屏蔽效應）"
+          ],
+          "examFocus": [
+            "Beer-Lambert law 的應用與限制",
+            "各光譜方法的原理與適用範圍",
+            "UV 吸收與分子結構的關係",
+            "NMR 的 chemical shift 判讀"
+          ]
+        },
+        {
+          "id": "titration",
+          "name": "Titration Analysis",
+          "nameTw": "滴定分析",
+          "tags": ["滴定分析", "藥物分析"],
+          "concept": "滴定分析是經典的定量分析方法，利用已知濃度的標準溶液與待測物反應，由消耗體積計算含量。",
+          "mechanism": [
+            {"type": "酸鹼滴定", "desc": "利用酸鹼中和反應定量"},
+            {"type": "氧化還原滴定", "desc": "利用氧化還原反應定量（如碘量法、過錳酸鉀法）"},
+            {"type": "沉澱滴定", "desc": "利用沉澱反應定量（如 Mohr 法測 Cl⁻）"},
+            {"type": "錯合滴定", "desc": "利用 EDTA 與金屬離子錯合反應定量"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["滴定類型", "標準液", "指示劑", "應用"],
+            "rows": [
+              ["酸鹼", "NaOH / HCl", "酚酞、甲基橙", "弱酸弱鹼藥物"],
+              ["碘量法", "Na2S2O3", "澱粉", "維生素 C"],
+              ["過錳酸鉀", "KMnO4", "自身指示劑", "Fe²⁺、H2O2"],
+              ["EDTA", "EDTA", "EBT", "金屬離子"]
+            ]
+          },
+          "pitfalls": [
+            "非水滴定用於弱酸弱鹼藥物（在水中無法直接滴定）",
+            "Karl Fischer 滴定專用於水分測定",
+            "滴定終點與等量點不一定相同（指示劑選擇很重要）"
+          ],
+          "examFocus": [
+            "各種滴定方法的原理與應用",
+            "非水滴定的原理與適用藥物",
+            "Karl Fischer 水分測定法",
+            "滴定計算"
+          ]
+        },
+        {
+          "id": "herbal-medicine",
+          "name": "Chinese Herbal Medicine",
+          "nameTw": "中藥學",
+          "tags": ["中藥學", "生藥學"],
+          "concept": "中藥學與生藥學研究天然藥物的來源、鑑定、有效成分與品質管制。藥師國考涵蓋常用中藥材的基原、性味、功效與活性成分。",
+          "mechanism": [
+            {"type": "生物鹼（Alkaloids）", "desc": "含氮有機化合物，如 morphine、caffeine、berberine"},
+            {"type": "萜類（Terpenoids）", "desc": "由 isoprene 單元組成，如 artemisinin、menthol"},
+            {"type": "黃酮類（Flavonoids）", "desc": "多酚類化合物，抗氧化，如 quercetin"},
+            {"type": "皂苷（Saponins）", "desc": "具界面活性，如人參皂苷 ginsenoside"},
+            {"type": "醣苷（Glycosides）", "desc": "糖與非糖部分結合，如 digoxin"}
+          ],
+          "drugList": [
+            {"drug": "黃連（Coptis）", "category": "生物鹼", "use": "清熱燥濕（berberine）"},
+            {"drug": "人參（Ginseng）", "category": "皂苷", "use": "補氣（ginsenoside）"},
+            {"drug": "青蒿（Artemisia）", "category": "萜類", "use": "抗瘧疾（artemisinin）"},
+            {"drug": "大黃（Rhubarb）", "category": "蒽醌", "use": "瀉下（sennoside）"},
+            {"drug": "甘草（Licorice）", "category": "皂苷", "use": "調和藥性（glycyrrhizin）"},
+            {"drug": "當歸（Angelica）", "category": "揮發油", "use": "補血活血"}
+          ],
+          "comparison": {
+            "headers": ["成分類型", "化學特徵", "代表藥材", "活性成分"],
+            "rows": [
+              ["生物鹼", "含氮、鹼性", "黃連、麻黃", "Berberine、Ephedrine"],
+              ["萜類", "Isoprene 單元", "青蒿、薄荷", "Artemisinin、Menthol"],
+              ["黃酮類", "C6-C3-C6", "銀杏、黃芩", "Ginkgolide、Baicalin"],
+              ["皂苷", "糖+三萜/甾體", "人參、甘草", "Ginsenoside、Glycyrrhizin"]
+            ]
+          },
+          "pitfalls": [
+            "甘草過量可能造成假性醛固酮增多症（高血壓、低血鉀）",
+            "人參與 warfarin 可能有交互作用",
+            "麻黃含 ephedrine，有心血管刺激作用",
+            "中藥材的基原（科別）是常考題型"
+          ],
+          "examFocus": [
+            "常用中藥材的基原植物與科別",
+            "天然物活性成分的化學分類",
+            "中藥與西藥的交互作用",
+            "生藥鑑定方法（顯微鑑定、TLC）"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pharmaceutics",
+      "name": "Pharmaceutics",
+      "nameTw": "藥劑學",
+      "icon": "FlaskConical",
+      "color": "#7c3aed",
+      "subjectKey": "pharm3",
+      "nodes": [
+        {
+          "id": "dosage-forms",
+          "name": "Dosage Forms",
+          "nameTw": "劑型學",
+          "tags": ["劑型學", "藥劑學"],
+          "concept": "劑型學研究藥物的各種給藥形式，包括固體劑型（錠劑、膠囊）、液體劑型（溶液、懸浮液、乳劑）、半固體劑型（軟膏、凝膠）等。劑型設計影響藥物的釋放速率、生體可用率與病人順從性。",
+          "mechanism": [
+            {"type": "錠劑（Tablet）", "desc": "最常見口服固體劑型，包括膜衣錠、腸溶錠、緩釋錠等"},
+            {"type": "膠囊（Capsule）", "desc": "硬膠囊（粉末）或軟膠囊（液體/半固體）"},
+            {"type": "懸浮液（Suspension）", "desc": "不溶性藥物分散在液體中，使用前需搖勻"},
+            {"type": "乳劑（Emulsion）", "desc": "兩種不互溶液體的分散系統（O/W 或 W/O）"},
+            {"type": "軟膏（Ointment）", "desc": "半固體外用劑型，基劑影響藥物釋放"}
+          ],
+          "drugList": [
+            {"drug": "腸溶錠", "category": "延遲釋放", "use": "保護胃黏膜或藥物（如 aspirin EC）"},
+            {"drug": "緩釋錠", "category": "控制釋放", "use": "減少給藥頻率（如 metformin ER）"},
+            {"drug": "舌下錠", "category": "速效", "use": "避開 first-pass（如 nitroglycerin SL）"},
+            {"drug": "栓劑", "category": "直腸/陰道", "use": "局部或全身作用"},
+            {"drug": "經皮貼片", "category": "經皮給藥", "use": "持續釋放（如 fentanyl patch）"}
+          ],
+          "comparison": {
+            "headers": ["劑型", "給藥途徑", "優點", "缺點"],
+            "rows": [
+              ["錠劑", "口服", "穩定、方便、劑量準確", "First-pass effect"],
+              ["膠囊", "口服", "掩味、美觀", "不可磨碎"],
+              ["懸浮液", "口服", "適合吞嚥困難者", "劑量不均、需搖勻"],
+              ["乳劑", "口服/外用", "增加脂溶性藥物吸收", "不穩定"],
+              ["軟膏", "外用", "保濕、藥物滲透好", "油膩感"]
+            ]
+          },
+          "pitfalls": [
+            "腸溶錠和緩釋錠不可磨碎或咀嚼（破壞釋放機制）",
+            "O/W 乳劑可被水稀釋且易清洗，W/O 則不行",
+            "懸浮液的沉降速率遵循 Stokes' law",
+            "軟膏基劑分類：油脂性（凡士林）、吸水性、水溶性（PEG）"
+          ],
+          "examFocus": [
+            "各種劑型的特性與適用情境",
+            "錠劑的製造流程（濕法造粒 vs 直接壓錠）",
+            "乳劑的類型判定方法",
+            "控制釋放劑型的設計原理"
+          ]
+        },
+        {
+          "id": "dissolution-bioavailability",
+          "name": "Dissolution & Bioavailability",
+          "nameTw": "溶離與生體可用率",
+          "tags": ["溶離與生體可用率", "藥劑學"],
+          "concept": "溶離（dissolution）是固體劑型藥物釋放的關鍵步驟，藥物必須先溶解才能被吸收。生體可用率（bioavailability, F）衡量藥物進入全身循環的比例與速率。",
+          "mechanism": [
+            {"type": "Noyes-Whitney equation", "desc": "dC/dt = DA(Cs-C)/h，描述溶離速率的影響因素"},
+            {"type": "BCS 分類", "desc": "依溶解度與滲透性將藥物分四類，決定生體相等性試驗需求"},
+            {"type": "生體可用率（F）", "desc": "F = AUC(test)/AUC(reference)，衡量藥物吸收程度"},
+            {"type": "生體相等性", "desc": "學名藥與原廠藥的 AUC 與 Cmax 比值在 80-125% 範圍內"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["BCS Class", "溶解度", "滲透性", "生體相等性", "代表藥物"],
+            "rows": [
+              ["I", "高", "高", "可豁免溶離試驗", "Metoprolol"],
+              ["II", "低", "高", "需溶離試驗", "Ibuprofen"],
+              ["III", "高", "低", "需 BE 試驗", "Ranitidine"],
+              ["IV", "低", "低", "需 BE 試驗", "Furosemide"]
+            ]
+          },
+          "pitfalls": [
+            "BCS Class I 藥物在特定條件下可豁免人體 BE 試驗",
+            "溶離速率受粒徑、溫度、攪拌速度、溶離介質影響",
+            "Cmax 反映吸收速率，AUC 反映吸收程度",
+            "Tmax 是達到 Cmax 的時間，與吸收速率相關"
+          ],
+          "examFocus": [
+            "Noyes-Whitney equation 的各參數意義",
+            "BCS 分類系統與生體相等性豁免",
+            "溶離試驗的方法與規範",
+            "生體可用率的計算"
+          ]
+        },
+        {
+          "id": "drug-stability",
+          "name": "Drug Stability",
+          "nameTw": "藥品安定性",
+          "tags": ["藥品安定性", "藥劑學"],
+          "concept": "藥品安定性研究藥物在儲存過程中的化學、物理、微生物變化。安定性試驗決定藥品的有效期限與儲存條件。",
+          "mechanism": [
+            {"type": "化學降解", "desc": "水解、氧化、光解、異構化等"},
+            {"type": "物理變化", "desc": "結晶、沉澱、顏色變化、吸濕"},
+            {"type": "Arrhenius equation", "desc": "k = Ae^(-Ea/RT)，溫度升高加速降解"},
+            {"type": "加速安定性試驗", "desc": "40°C/75% RH，6 個月，預測長期安定性"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["降解類型", "機制", "易受影響藥物", "防護措施"],
+            "rows": [
+              ["水解", "酯/醯胺鍵斷裂", "Aspirin、Penicillin", "控制 pH、減少水分"],
+              ["氧化", "自由基反應", "Vitamin C、Morphine", "抗氧化劑、充氮"],
+              ["光解", "光能引發降解", "Nifedipine、Nitroprusside", "避光包裝"],
+              ["異構化", "構型改變", "Tetracycline", "控制 pH 與溫度"]
+            ]
+          },
+          "pitfalls": [
+            "零級降解：t90 = 0.1C0/k（剩餘 90% 的時間）",
+            "一級降解：t½ = 0.693/k",
+            "Aspirin 水解產生醋酸（醋味）是常見的安定性問題",
+            "Tetracycline 降解產物（epitetracycline）有腎毒性"
+          ],
+          "examFocus": [
+            "各種降解反應的類型與防護",
+            "Arrhenius equation 的應用",
+            "零級與一級降解動力學計算",
+            "ICH 安定性試驗條件"
+          ]
+        },
+        {
+          "id": "drug-delivery",
+          "name": "Drug Delivery Systems",
+          "nameTw": "藥物傳遞系統",
+          "tags": ["藥物傳遞系統", "藥劑學"],
+          "concept": "藥物傳遞系統（DDS）旨在控制藥物的釋放速率、時間與部位，提高療效並減少副作用。包括微脂體、奈米粒子、標靶給藥等先進技術。",
+          "mechanism": [
+            {"type": "Liposome（微脂體）", "desc": "磷脂雙層囊泡，可包覆親水性與疏水性藥物"},
+            {"type": "Nanoparticle", "desc": "奈米級載體，增加藥物溶解度與靶向性"},
+            {"type": "Osmotic pump", "desc": "利用滲透壓控制藥物釋放速率"},
+            {"type": "Transdermal patch", "desc": "經皮給藥系統，持續釋放"}
+          ],
+          "drugList": [
+            {"drug": "Doxil", "category": "PEGylated liposome", "use": "Doxorubicin 微脂體"},
+            {"drug": "Abraxane", "category": "Albumin nanoparticle", "use": "Paclitaxel 奈米製劑"},
+            {"drug": "OROS", "category": "Osmotic pump", "use": "Methylphenidate ER"}
+          ],
+          "comparison": {
+            "headers": ["系統", "原理", "優點", "限制"],
+            "rows": [
+              ["Liposome", "磷脂囊泡", "減少毒性、靶向", "穩定性差"],
+              ["PEGylation", "PEG 修飾", "延長循環時間", "可能產生抗體"],
+              ["Nanoparticle", "奈米載體", "增加溶解度", "製造複雜"],
+              ["Osmotic pump", "滲透壓驅動", "零級釋放", "不可調整劑量"]
+            ]
+          },
+          "pitfalls": [
+            "PEGylated liposome 可延長循環時間（stealth effect）",
+            "EPR effect（Enhanced Permeability and Retention）是奈米藥物靶向腫瘤的基礎",
+            "Osmotic pump 提供接近零級的藥物釋放"
+          ],
+          "examFocus": [
+            "各種 DDS 的原理與特性",
+            "Liposome 的結構與藥物包覆",
+            "控制釋放的動力學模型",
+            "靶向給藥的策略"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "clinical-pharmacy",
+      "name": "Clinical Pharmacy",
+      "nameTw": "臨床藥學",
+      "icon": "Stethoscope",
+      "color": "#dc2626",
+      "subjectKey": "pharm4",
+      "nodes": [
+        {
+          "id": "prescription-dispensing",
+          "name": "Prescription Dispensing",
+          "nameTw": "處方調劑",
+          "tags": ["處方調劑", "調劑學"],
+          "concept": "處方調劑是藥師的核心業務，包括處方審核、藥品調配、覆核、交付與用藥指導。藥師需確認處方的適當性、劑量正確性、藥物交互作用等。",
+          "mechanism": [
+            {"type": "處方審核", "desc": "確認病人資訊、藥品名稱、劑量、途徑、頻率、天數"},
+            {"type": "藥品調配", "desc": "依處方正確取藥、計量、標示"},
+            {"type": "覆核", "desc": "雙重確認藥品正確性"},
+            {"type": "用藥指導", "desc": "告知病人用法、注意事項、副作用"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["處方類型", "特色", "注意事項"],
+            "rows": [
+              ["一般處方", "門診處方", "效期通常 3 天"],
+              ["管制藥品處方", "需專用處方箋", "依管制等級規範"],
+              ["慢性病連續處方", "可分次調劑", "效期 90 天，分 3 次"]
+            ]
+          },
+          "pitfalls": [
+            "處方箋的法定記載事項不可缺漏",
+            "管制藥品處方箋需另外開立",
+            "慢性病連續處方箋每次調劑間隔需注意"
+          ],
+          "examFocus": [
+            "處方箋的法定格式與記載事項",
+            "調劑流程與注意事項",
+            "管制藥品處方的特殊規定",
+            "慢性病連續處方箋的使用規範"
+          ]
+        },
+        {
+          "id": "drug-interaction",
+          "name": "Drug Interactions",
+          "nameTw": "藥物交互作用",
+          "tags": ["藥物交互作用", "調劑學"],
+          "concept": "藥物交互作用分為藥動學交互作用（影響 ADME）和藥效學交互作用（影響藥理效應）。藥師需識別臨床顯著的交互作用並提供建議。",
+          "mechanism": [
+            {"type": "藥動學交互作用", "desc": "影響吸收（螯合）、分布（蛋白結合競爭）、代謝（CYP 誘導/抑制）、排泄"},
+            {"type": "藥效學交互作用", "desc": "協同作用（synergism）或拮抗作用（antagonism）"},
+            {"type": "CYP 抑制", "desc": "抑制代謝酵素，增加受質藥物血中濃度"},
+            {"type": "CYP 誘導", "desc": "誘導代謝酵素，降低受質藥物血中濃度"}
+          ],
+          "drugList": [
+            {"drug": "Warfarin + Aspirin", "category": "藥效學", "use": "增加出血風險"},
+            {"drug": "Warfarin + Rifampin", "category": "CYP 誘導", "use": "降低 warfarin 效果"},
+            {"drug": "Simvastatin + Erythromycin", "category": "CYP3A4 抑制", "use": "增加 statin 毒性"},
+            {"drug": "Tetracycline + 制酸劑", "category": "螯合", "use": "降低吸收"},
+            {"drug": "Methotrexate + NSAIDs", "category": "腎排泄競爭", "use": "增加 MTX 毒性"}
+          ],
+          "comparison": {
+            "headers": ["交互作用類型", "機制", "臨床結果", "處理方式"],
+            "rows": [
+              ["CYP 抑制", "↓ 代謝", "血中濃度 ↑", "減量或換藥"],
+              ["CYP 誘導", "↑ 代謝", "血中濃度 ↓", "增量或換藥"],
+              ["蛋白結合競爭", "↑ 游離態", "短暫效果增強", "監測"],
+              ["螯合作用", "↓ 吸收", "藥效降低", "間隔服用"]
+            ]
+          },
+          "pitfalls": [
+            "CYP3A4 抑制劑：ketoconazole、erythromycin、grapefruit juice",
+            "CYP3A4 誘導劑：rifampin、carbamazepine、phenytoin、St. John's wort",
+            "Warfarin 的交互作用最多，需特別注意",
+            "蛋白結合競爭的臨床意義常被高估（游離態增加但清除也增加）"
+          ],
+          "examFocus": [
+            "常見的 CYP450 抑制劑與誘導劑",
+            "Warfarin 的藥物交互作用",
+            "藥動學 vs 藥效學交互作用的區別",
+            "臨床顯著交互作用的處理策略"
+          ]
+        },
+        {
+          "id": "tdm",
+          "name": "Therapeutic Drug Monitoring",
+          "nameTw": "治療藥物監測",
+          "tags": ["治療藥物監測", "調劑學"],
+          "concept": "治療藥物監測（TDM）是對治療範圍窄的藥物進行血中濃度監測，以確保療效並避免毒性。需要 TDM 的藥物通常具有窄治療指數、個體差異大、非線性藥動學等特性。",
+          "mechanism": [
+            {"type": "Trough level（谷濃度）", "desc": "下次給藥前的最低濃度，反映穩態最低值"},
+            {"type": "Peak level（峰濃度）", "desc": "給藥後的最高濃度，與療效和毒性相關"},
+            {"type": "AUC monitoring", "desc": "某些藥物以 AUC 為監測目標（如 vancomycin）"}
+          ],
+          "drugList": [
+            {"drug": "Vancomycin", "category": "抗生素", "use": "AUC/MIC 400-600 為目標"},
+            {"drug": "Aminoglycoside", "category": "抗生素", "use": "Peak 與 trough 監測"},
+            {"drug": "Digoxin", "category": "強心苷", "use": "0.5-2.0 ng/mL"},
+            {"drug": "Lithium", "category": "情緒穩定劑", "use": "0.6-1.2 mEq/L"},
+            {"drug": "Phenytoin", "category": "抗癲癇", "use": "10-20 μg/mL"},
+            {"drug": "Theophylline", "category": "支氣管擴張", "use": "10-20 μg/mL"},
+            {"drug": "Cyclosporine", "category": "免疫抑制", "use": "依移植類型調整"}
+          ],
+          "comparison": {
+            "headers": ["藥物", "治療範圍", "毒性表現", "監測時機"],
+            "rows": [
+              ["Digoxin", "0.5-2.0 ng/mL", "心律不整、視覺異常", "穩態後 trough"],
+              ["Lithium", "0.6-1.2 mEq/L", "震顫、腎毒性、甲低", "穩態後 trough"],
+              ["Phenytoin", "10-20 μg/mL", "眼球震顫、共濟失調", "穩態後 trough"],
+              ["Vancomycin", "AUC/MIC 400-600", "腎毒性", "AUC-based"],
+              ["Theophylline", "10-20 μg/mL", "心律不整、癲癇", "穩態後 trough"]
+            ]
+          },
+          "pitfalls": [
+            "Phenytoin 蛋白結合率高（90%），低白蛋白時需校正：校正濃度 = 測量濃度 / (0.2 × Albumin + 0.1)",
+            "Digoxin 中毒與低血鉀相關（低鉀增加 digoxin 敏感性）",
+            "Vancomycin 新指引建議 AUC-guided dosing 取代 trough-only monitoring",
+            "Aminoglycoside 的 once-daily dosing 可減少腎毒性"
+          ],
+          "examFocus": [
+            "需要 TDM 的藥物清單與治療範圍",
+            "採血時機的選擇",
+            "Phenytoin 的蛋白結合校正",
+            "Digoxin 中毒的危險因子與處理"
+          ]
+        },
+        {
+          "id": "sterile-compounding",
+          "name": "Sterile Compounding",
+          "nameTw": "無菌調劑",
+          "tags": ["無菌調劑", "調劑學"],
+          "concept": "無菌調劑是在無菌環境下配製注射劑、TPN、化療藥物等。需遵循嚴格的無菌操作技術與品質管制標準。",
+          "mechanism": [
+            {"type": "層流操作台（Laminar flow hood）", "desc": "提供 HEPA 過濾的潔淨空氣"},
+            {"type": "TPN 調配", "desc": "全靜脈營養液的配製，需注意相容性"},
+            {"type": "化療藥物調配", "desc": "需在生物安全櫃（BSC）中操作"},
+            {"type": "USP <797>", "desc": "美國藥典無菌調劑標準"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["風險等級", "BUD（使用期限）", "環境要求", "範例"],
+            "rows": [
+              ["Low risk", "48 hr（室溫）", "ISO 5", "單一轉移"],
+              ["Medium risk", "30 hr（室溫）", "ISO 5", "多次轉移"],
+              ["High risk", "24 hr（室溫）", "ISO 5", "非無菌原料"]
+            ]
+          },
+          "pitfalls": [
+            "Horizontal laminar flow hood 用於一般無菌調劑，vertical（BSC）用於化療藥物",
+            "TPN 中鈣與磷酸鹽可能產生沉澱（需注意添加順序）",
+            "化療藥物外溢處理（spill kit）是重要考點",
+            "無菌操作的手部衛生與穿著規範"
+          ],
+          "examFocus": [
+            "無菌調劑的環境要求與設備",
+            "TPN 的成分與相容性",
+            "化療藥物的安全處理",
+            "USP <797> 的風險分級與 BUD"
+          ]
+        },
+        {
+          "id": "adverse-drug-reaction",
+          "name": "Adverse Drug Reactions",
+          "nameTw": "藥物不良反應",
+          "tags": ["藥物不良反應", "調劑學"],
+          "concept": "藥物不良反應（ADR）分為 Type A（劑量相關、可預測）和 Type B（與劑量無關、不可預測如過敏）。藥師需監測、通報並預防 ADR。",
+          "mechanism": [
+            {"type": "Type A（Augmented）", "desc": "藥理作用的延伸，劑量相關，可預測"},
+            {"type": "Type B（Bizarre）", "desc": "與藥理作用無關，不可預測（如過敏、特異體質）"},
+            {"type": "Type C（Chronic）", "desc": "長期使用相關"},
+            {"type": "Type D（Delayed）", "desc": "延遲出現（如致癌、致畸胎）"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["類型", "特徵", "發生率", "嚴重度", "範例"],
+            "rows": [
+              ["Type A", "劑量相關", "高", "通常較輕", "降壓藥→低血壓"],
+              ["Type B", "不可預測", "低", "可能致命", "Penicillin 過敏"],
+              ["Type C", "長期累積", "中", "中", "類固醇→骨質疏鬆"],
+              ["Type D", "延遲出現", "低", "嚴重", "DES→陰道癌"]
+            ]
+          },
+          "pitfalls": [
+            "藥物過敏（Type B）與劑量無關，即使微量也可能發生",
+            "Stevens-Johnson syndrome（SJS）是嚴重的藥物過敏反應",
+            "ADR 通報是藥師的法定義務",
+            "Naranjo scale 用於評估 ADR 的因果關係"
+          ],
+          "examFocus": [
+            "ADR 的分類系統",
+            "常見藥物的嚴重 ADR",
+            "ADR 通報制度",
+            "藥物過敏的處理流程"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pharmacotherapy",
+      "name": "Pharmacotherapy",
+      "nameTw": "藥物治療學",
+      "icon": "HeartPulse",
+      "color": "#d97706",
+      "subjectKey": "pharm5",
+      "nodes": [
+        {
+          "id": "diabetes-therapy",
+          "name": "Diabetes Pharmacotherapy",
+          "nameTw": "糖尿病治療",
+          "tags": ["內分泌疾病治療", "藥物治療學"],
+          "concept": "糖尿病藥物治療依據 ADA 指引，T2DM 首選 metformin，再依合併症選擇 SGLT2i、GLP-1 RA 等。T1DM 需胰島素治療。",
+          "mechanism": [
+            {"type": "Metformin", "desc": "↓ 肝臟糖質新生，↑ 胰島素敏感性，不會低血糖"},
+            {"type": "SGLT2 inhibitor", "desc": "↓ 腎臟葡萄糖再吸收，有心腎保護效果"},
+            {"type": "GLP-1 RA", "desc": "↑ 胰島素分泌，↓ 升糖素，延緩胃排空，減重"},
+            {"type": "DPP-4 inhibitor", "desc": "↑ 內源性 GLP-1 濃度"},
+            {"type": "Insulin", "desc": "直接補充胰島素"}
+          ],
+          "drugList": [
+            {"drug": "Metformin", "category": "Biguanide", "use": "T2DM 首選"},
+            {"drug": "Empagliflozin", "category": "SGLT2i", "use": "T2DM + 心衰竭"},
+            {"drug": "Liraglutide", "category": "GLP-1 RA", "use": "T2DM + ASCVD"},
+            {"drug": "Sitagliptin", "category": "DPP-4i", "use": "T2DM 輔助"},
+            {"drug": "Pioglitazone", "category": "TZD", "use": "T2DM（胰島素阻抗）"}
+          ],
+          "comparison": {
+            "headers": ["藥物類別", "低血糖風險", "體重影響", "心腎保護", "主要副作用"],
+            "rows": [
+              ["Metformin", "低", "中性/↓", "中性", "GI、乳酸酸中毒"],
+              ["SGLT2i", "低", "↓", "有", "UTI、DKA"],
+              ["GLP-1 RA", "低", "↓↓", "有（ASCVD）", "GI、胰臟炎"],
+              ["DPP-4i", "低", "中性", "中性", "關節痛"],
+              ["SU", "高", "↑", "無", "低血糖、體重增加"],
+              ["Insulin", "高", "↑", "無", "低血糖"]
+            ]
+          },
+          "pitfalls": [
+            "有 ASCVD 的 T2DM 患者優先選擇有心血管保護的 GLP-1 RA 或 SGLT2i",
+            "有心衰竭的 T2DM 患者優先選擇 SGLT2i",
+            "Metformin 在 eGFR < 30 時禁用",
+            "SGLT2i 可能造成 euglycemic DKA（血糖正常的酮酸中毒）"
+          ],
+          "examFocus": [
+            "T2DM 的階梯式治療策略（ADA 指引）",
+            "依合併症選擇降血糖藥物",
+            "各類降血糖藥的比較",
+            "胰島素的起始與調整"
+          ]
+        },
+        {
+          "id": "anticoagulation-therapy",
+          "name": "Anticoagulation Therapy",
+          "nameTw": "抗凝血治療",
+          "tags": ["心血管疾病治療", "藥物治療學"],
+          "concept": "抗凝血治療用於預防和治療血栓栓塞疾病，包括心房顫動、深層靜脈血栓、肺栓塞等。藥物選擇需考慮適應症、腎功能、出血風險等。",
+          "mechanism": [
+            {"type": "Warfarin", "desc": "抑制 vitamin K 依賴性凝血因子合成（II, VII, IX, X）"},
+            {"type": "DOAC", "desc": "直接抑制特定凝血因子（Xa 或 thrombin）"},
+            {"type": "Heparin", "desc": "活化 antithrombin III"},
+            {"type": "Antiplatelet", "desc": "抑制血小板聚集"}
+          ],
+          "drugList": [
+            {"drug": "Warfarin", "category": "VKA", "use": "AF（機械瓣膜）"},
+            {"drug": "Apixaban", "category": "Factor Xa inhibitor", "use": "AF、VTE"},
+            {"drug": "Rivaroxaban", "category": "Factor Xa inhibitor", "use": "AF、VTE"},
+            {"drug": "Dabigatran", "category": "Direct thrombin inhibitor", "use": "AF"},
+            {"drug": "Enoxaparin", "category": "LMWH", "use": "VTE 治療/預防"}
+          ],
+          "comparison": {
+            "headers": ["藥物", "給藥", "監測", "食物交互", "腎功能影響"],
+            "rows": [
+              ["Warfarin", "口服 QD", "INR", "Vitamin K 食物", "肝代謝"],
+              ["Apixaban", "口服 BID", "不需", "少", "25% 腎"],
+              ["Rivaroxaban", "口服 QD", "不需", "需隨餐", "33% 腎"],
+              ["Dabigatran", "口服 BID", "不需", "少", "80% 腎"]
+            ]
+          },
+          "pitfalls": [
+            "機械心臟瓣膜只能用 warfarin，DOAC 禁用",
+            "DOAC 在嚴重腎功能不全時需減量或禁用",
+            "Warfarin 起效慢（需 5-7 天），初期需 bridge with heparin",
+            "CHA2DS2-VASc score 用於評估 AF 患者的中風風險"
+          ],
+          "examFocus": [
+            "AF 抗凝血治療的藥物選擇",
+            "VTE 的急性治療與長期預防",
+            "Warfarin vs DOAC 的比較",
+            "抗凝血劑的出血處理與解毒劑"
+          ]
+        },
+        {
+          "id": "infection-therapy",
+          "name": "Infectious Disease Therapy",
+          "nameTw": "感染症治療",
+          "tags": ["感染症治療", "藥物治療學"],
+          "concept": "感染症治療需依據感染部位、致病菌、抗藥性模式選擇適當的抗生素。經驗性治療需覆蓋最可能的病原菌，確定性治療則依培養結果調整。",
+          "mechanism": [
+            {"type": "經驗性治療", "desc": "在培養結果出來前，依臨床判斷選擇廣效抗生素"},
+            {"type": "確定性治療", "desc": "依培養與感受性結果，選擇最窄效抗生素"},
+            {"type": "De-escalation", "desc": "從廣效降階為窄效，減少抗藥性"}
+          ],
+          "drugList": [
+            {"drug": "CAP 經驗治療", "category": "門診", "use": "Amoxicillin 或 Azithromycin"},
+            {"drug": "CAP 住院", "category": "住院", "use": "β-lactam + Macrolide"},
+            {"drug": "UTI 經驗治療", "category": "單純性", "use": "Nitrofurantoin 或 TMP-SMX"},
+            {"drug": "MRSA", "category": "嚴重感染", "use": "Vancomycin 或 Linezolid"},
+            {"drug": "C. difficile", "category": "初次", "use": "Oral Vancomycin 或 Fidaxomicin"}
+          ],
+          "comparison": {
+            "headers": ["感染", "常見病原", "首選治療", "替代方案"],
+            "rows": [
+              ["CAP（社區肺炎）", "S. pneumoniae", "Amoxicillin", "Azithromycin"],
+              ["UTI（泌尿道）", "E. coli", "Nitrofurantoin", "TMP-SMX"],
+              ["Cellulitis", "S. aureus, Strep", "Cephalexin", "Clindamycin"],
+              ["Meningitis", "N. meningitidis", "Ceftriaxone", "Meropenem"],
+              ["C. difficile", "C. difficile", "Oral Vancomycin", "Fidaxomicin"]
+            ]
+          },
+          "pitfalls": [
+            "Oral vancomycin 用於 C. difficile（IV vancomycin 無效，因不到達腸道）",
+            "Aminoglycoside 需監測 peak 和 trough（或用 extended-interval dosing）",
+            "Penicillin 過敏者使用 cephalosporin 的交叉過敏率約 1-2%",
+            "抗生素療程不宜過長，以減少抗藥性"
+          ],
+          "examFocus": [
+            "各種感染的經驗性治療選擇",
+            "抗生素的 PK/PD 原則（time-dependent vs concentration-dependent）",
+            "特殊族群的抗生素調整（腎功能不全、孕婦）",
+            "抗藥性菌的治療策略"
+          ]
+        },
+        {
+          "id": "cv-disease-therapy",
+          "name": "Cardiovascular Disease Therapy",
+          "nameTw": "心血管疾病治療",
+          "tags": ["心血管疾病治療", "藥物治療學"],
+          "concept": "心血管疾病治療涵蓋高血壓、心衰竭、冠心症、心律不整等。治療策略依據最新指引，強調個人化治療與多重危險因子控制。",
+          "mechanism": [
+            {"type": "高血壓治療", "desc": "ACEI/ARB、CCB、Thiazide 為一線用藥"},
+            {"type": "心衰竭治療", "desc": "GDMT：ACEI/ARB/ARNI + β-blocker + MRA + SGLT2i"},
+            {"type": "ACS 治療", "desc": "DAPT + Anticoagulation + Statin + β-blocker + ACEI"}
+          ],
+          "drugList": [
+            {"drug": "Sacubitril/Valsartan", "category": "ARNI", "use": "HFrEF"},
+            {"drug": "Carvedilol", "category": "β-blocker", "use": "心衰竭"},
+            {"drug": "Spironolactone", "category": "MRA", "use": "HFrEF"},
+            {"drug": "Atorvastatin", "category": "Statin", "use": "降 LDL、ACS"},
+            {"drug": "Ticagrelor", "category": "P2Y12 inhibitor", "use": "ACS"}
+          ],
+          "comparison": {
+            "headers": ["疾病", "一線治療", "目標", "注意事項"],
+            "rows": [
+              ["高血壓", "ACEI/ARB, CCB, Thiazide", "< 130/80", "依合併症選擇"],
+              ["HFrEF", "ACEI+BB+MRA+SGLT2i", "LVEF 改善", "四柱治療"],
+              ["ACS", "DAPT+Statin+BB+ACEI", "預防再發", "至少 12 月 DAPT"],
+              ["AF", "Rate/Rhythm control + AC", "預防中風", "CHA2DS2-VASc"]
+            ]
+          },
+          "pitfalls": [
+            "HFrEF 的四柱治療（Fantastic Four）：ACEI/ARNI + BB + MRA + SGLT2i",
+            "β-blocker 在急性失代償心衰竭時不可新開始使用",
+            "Statin 的強度分級：高強度（Atorvastatin 40-80mg）降 LDL ≥50%",
+            "DAPT 後出血風險需用 PRECISE-DAPT 或 DAPT score 評估"
+          ],
+          "examFocus": [
+            "高血壓的藥物選擇策略",
+            "心衰竭的 GDMT",
+            "ACS 的急性與長期治療",
+            "Statin 的適應症與強度選擇"
+          ]
+        },
+        {
+          "id": "renal-disease-therapy",
+          "name": "Renal Disease Therapy",
+          "nameTw": "腎臟疾病治療",
+          "tags": ["腎臟疾病治療", "藥物治療學"],
+          "concept": "慢性腎臟病（CKD）的藥物治療包括延緩腎功能惡化、控制合併症（貧血、骨病變、電解質異常）、以及腎功能不全時的藥物劑量調整。",
+          "mechanism": [
+            {"type": "ACEI/ARB", "desc": "降低腎絲球內壓，減少蛋白尿，延緩 CKD 進展"},
+            {"type": "SGLT2i", "desc": "腎臟保護效果，減少蛋白尿"},
+            {"type": "ESA", "desc": "Erythropoiesis-stimulating agent，治療腎性貧血"},
+            {"type": "Phosphate binder", "desc": "降低血磷，預防腎性骨病變"}
+          ],
+          "drugList": [
+            {"drug": "Losartan", "category": "ARB", "use": "CKD 蛋白尿"},
+            {"drug": "Dapagliflozin", "category": "SGLT2i", "use": "CKD 腎保護"},
+            {"drug": "Epoetin alfa", "category": "ESA", "use": "腎性貧血"},
+            {"drug": "Sevelamer", "category": "Phosphate binder", "use": "高血磷"},
+            {"drug": "Calcitriol", "category": "Active Vit D", "use": "繼發性副甲狀腺亢進"}
+          ],
+          "comparison": {
+            "headers": ["CKD 合併症", "治療藥物", "目標", "注意事項"],
+            "rows": [
+              ["蛋白尿", "ACEI/ARB + SGLT2i", "UPCR < 0.5", "監測血鉀與腎功能"],
+              ["貧血", "ESA + Iron", "Hb 10-11.5", "不可過度校正"],
+              ["高血磷", "Phosphate binder", "PO4 < 5.5", "隨餐服用"],
+              ["繼發性 HPTH", "Calcitriol/Cinacalcet", "PTH 正常化", "監測血鈣"]
+            ]
+          },
+          "pitfalls": [
+            "ESA 過度使用（Hb > 13）增加心血管風險",
+            "CKD 患者需避免 NSAIDs（降低腎血流）",
+            "Metformin 在 eGFR < 30 時禁用",
+            "腎功能不全時許多藥物需減量（如 gabapentin、enoxaparin）"
+          ],
+          "examFocus": [
+            "CKD 的分期與各期治療重點",
+            "腎性貧血的治療目標與藥物",
+            "藥物在腎功能不全時的劑量調整",
+            "透析患者的藥物使用注意事項"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pharmacy-law",
+      "name": "Pharmacy Law",
+      "nameTw": "藥事法規",
+      "icon": "Scale",
+      "color": "#4338ca",
+      "subjectKey": "pharm6",
+      "nodes": [
+        {
+          "id": "pharmacy-act",
+          "name": "Pharmacy Act",
+          "nameTw": "藥事法規",
+          "tags": ["藥事法規", "藥事行政與法規"],
+          "concept": "藥事法是規範藥品管理的母法，涵蓋藥品定義、許可證、製造、販賣、廣告、標示等。藥師法則規範藥師的資格、業務範圍與責任。",
+          "mechanism": [
+            {"type": "藥品許可證", "desc": "藥品上市前需取得衛福部核發的藥品許可證"},
+            {"type": "藥品分級", "desc": "處方藥、指示藥、成藥三級分類"},
+            {"type": "藥品廣告", "desc": "需事先申請核准，不得誇大療效"},
+            {"type": "藥師業務", "desc": "調劑、藥品管理、用藥諮詢、藥事照護"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["藥品分級", "取得方式", "廣告限制", "範例"],
+            "rows": [
+              ["處方藥", "需醫師處方", "不得對一般民眾廣告", "抗生素、降壓藥"],
+              ["指示藥", "藥師指示", "可廣告但需核准", "胃藥、感冒藥"],
+              ["成藥", "自行購買", "可廣告", "OK 繃、綠油精"]
+            ]
+          },
+          "pitfalls": [
+            "藥品廣告核准有效期間為一年，需重新申請",
+            "藥師親自調劑是法定義務，不得委由他人",
+            "偽藥、禁藥、劣藥的定義與罰則不同",
+            "藥局與藥房的法律定位不同"
+          ],
+          "examFocus": [
+            "藥事法的重要條文",
+            "藥品分級制度",
+            "藥品廣告的規範",
+            "藥師的法定業務範圍",
+            "偽藥/禁藥/劣藥的定義與罰則"
+          ]
+        },
+        {
+          "id": "controlled-substances",
+          "name": "Controlled Substances",
+          "nameTw": "管制藥品",
+          "tags": ["管制藥品", "藥事法規"],
+          "concept": "管制藥品依其成癮性、濫用性與社會危害性分為四級。管制藥品管理條例規範其製造、輸入、販賣、使用與銷毀。",
+          "mechanism": [
+            {"type": "第一級", "desc": "成癮性最強：海洛因、嗎啡、鴉片"},
+            {"type": "第二級", "desc": "成癮性次強：安非他命、古柯鹼、大麻"},
+            {"type": "第三級", "desc": "中度成癮性：FM2、小白板、K 他命"},
+            {"type": "第四級", "desc": "輕度成癮性：Diazepam、Zolpidem、Alprazolam"}
+          ],
+          "drugList": [
+            {"drug": "Morphine", "category": "第一級", "use": "嚴重疼痛"},
+            {"drug": "Methylphenidate", "category": "第三級", "use": "ADHD"},
+            {"drug": "Diazepam", "category": "第四級", "use": "焦慮、癲癇"},
+            {"drug": "Zolpidem", "category": "第四級", "use": "失眠"},
+            {"drug": "Codeine", "category": "第二級", "use": "止咳、止痛"}
+          ],
+          "comparison": {
+            "headers": ["級別", "處方限制", "保存期限", "範例"],
+            "rows": [
+              ["第一級", "專用處方箋", "永久保存", "Morphine"],
+              ["第二級", "專用處方箋", "永久保存", "Amphetamine"],
+              ["第三級", "一般處方箋", "保存 5 年", "Methylphenidate"],
+              ["第四級", "一般處方箋", "保存 5 年", "Diazepam"]
+            ]
+          },
+          "pitfalls": [
+            "管制藥品的收支簿冊需定期申報",
+            "第一、二級管制藥品需專用處方箋",
+            "管制藥品不得郵寄",
+            "過期管制藥品需依規定銷毀並記錄"
+          ],
+          "examFocus": [
+            "管制藥品的四級分類",
+            "各級管制藥品的管理規範",
+            "管制藥品處方箋的規定",
+            "管制藥品的保存與銷毀"
+          ]
+        },
+        {
+          "id": "nhi-system",
+          "name": "NHI System",
+          "nameTw": "健保制度",
+          "tags": ["健保制度", "藥事法規"],
+          "concept": "全民健康保險是台灣的社會保險制度，藥師需了解健保給付規範、藥品核價制度、處方箋管理等。",
+          "mechanism": [
+            {"type": "藥品給付", "desc": "依健保藥品給付規定，分為一般給付與事前審查"},
+            {"type": "藥價基準", "desc": "健保署核定藥品支付價格"},
+            {"type": "處方箋管理", "desc": "慢性病連續處方箋可分次調劑"},
+            {"type": "藥品部分負擔", "desc": "依藥費金額收取部分負擔"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["項目", "規定", "注意事項"],
+            "rows": [
+              ["慢箋", "效期 90 天，分 3 次", "每次間隔需注意"],
+              ["藥品部分負擔", "依藥費分級", "低收入戶免部分負擔"],
+              ["事前審查", "特殊藥品需申請", "如生物製劑"]
+            ]
+          },
+          "pitfalls": [
+            "慢性病連續處方箋的藥品不得任意更換",
+            "健保藥品給付有適應症限制",
+            "藥價調整（藥價黑洞）是健保重要議題"
+          ],
+          "examFocus": [
+            "健保藥品給付規範",
+            "慢性病連續處方箋的使用規定",
+            "藥品部分負擔制度",
+            "藥價基準與藥價調整"
+          ]
+        },
+        {
+          "id": "drug-safety-surveillance",
+          "name": "Drug Safety Surveillance",
+          "nameTw": "藥品安全監視",
+          "tags": ["藥品安全監視", "藥事法規"],
+          "concept": "藥品安全監視制度確保上市後藥品的安全性，包括 ADR 通報、風險管理計畫、藥品回收等。藥師是 ADR 通報的重要角色。",
+          "mechanism": [
+            {"type": "ADR 通報", "desc": "醫療人員發現疑似 ADR 應通報全國藥物不良反應通報中心"},
+            {"type": "RMP（風險管理計畫）", "desc": "新藥上市後的安全監視計畫"},
+            {"type": "藥品回收", "desc": "依嚴重程度分為三級回收"}
+          ],
+          "drugList": [],
+          "comparison": {
+            "headers": ["回收等級", "嚴重程度", "時限", "範例"],
+            "rows": [
+              ["第一級", "可能致死或嚴重危害", "24 小時內", "污染、標示錯誤"],
+              ["第二級", "可能危害但非致死", "通知後執行", "效期問題"],
+              ["第三級", "不致危害但不符規定", "通知後執行", "標示瑕疵"]
+            ]
+          },
+          "pitfalls": [
+            "ADR 通報是自願性質，但嚴重 ADR 應主動通報",
+            "新藥上市後 5 年內為加強監視期",
+            "藥品回收需通知下游並記錄"
+          ],
+          "examFocus": [
+            "ADR 通報制度與流程",
+            "藥品回收的分級制度",
+            "上市後安全監視的機制",
+            "藥師在藥品安全中的角色"
+          ]
+        }
+      ]
+    }
+  ]
+}
