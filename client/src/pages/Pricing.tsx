@@ -296,24 +296,31 @@ export default function Pricing() {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   ) : (
-                    <button
-                      onClick={() => handleSubscribe(plan.id as PaidPlanId)}
-                      disabled={loading !== null}
-                      className="btn-capsule w-full flex items-center justify-center gap-1.5 py-3 text-white text-sm disabled:opacity-50"
-                      style={{ backgroundColor: loading === plan.id ? "#9ca3af" : plan.accentColor }}
-                    >
-                      {loading === plan.id ? (
-                        <span className="flex items-center gap-2">
-                          <span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-                          處理中...
-                        </span>
-                      ) : (
-                        <>
-                          {plan.cta}
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </>
+                    <div>
+                      {isSubscribed && !isCurrentPlan && !plan.isFree && (
+                        <p className="text-[10px] text-center text-muted-foreground mb-2">
+                          升級後到期日將重新計算
+                        </p>
                       )}
-                    </button>
+                      <button
+                        onClick={() => handleSubscribe(plan.id as PaidPlanId)}
+                        disabled={loading !== null}
+                        className="btn-capsule w-full flex items-center justify-center gap-1.5 py-3 text-white text-sm disabled:opacity-50"
+                        style={{ backgroundColor: loading === plan.id ? "#9ca3af" : plan.accentColor }}
+                      >
+                        {loading === plan.id ? (
+                          <span className="flex items-center gap-2">
+                            <span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                            處理中...
+                          </span>
+                        ) : (
+                          <>
+                            {isSubscribed ? "升級此方案" : plan.cta}
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </>
+                        )}
+                      </button>
+                    </div>
                   )}
                 </div>
               </motion.div>
