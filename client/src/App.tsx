@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import RequireAuth from "./components/RequireAuth";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import Home from "./pages/Home";
@@ -20,18 +21,36 @@ import NotFound from "./pages/NotFound";
 function Router() {
   return (
     <Switch>
+      {/* 公開頁面 — 不需登入 */}
       <Route path="/" component={Home} />
-      <Route path="/subjects" component={Subjects} />
-      <Route path="/quiz/:subjectKey" component={Quiz} />
-      <Route path="/quiz/:subjectKey/:tag" component={Quiz} />
-      <Route path="/knowledge" component={KnowledgeMap} />
-      <Route path="/knowledge/:tag" component={KnowledgeDetail} />
-      <Route path="/mock-exam" component={MockExam} />
-      <Route path="/results" component={Results} />
       <Route path="/pricing" component={Pricing} />
-      <Route path="/payment/success" component={PaymentSuccess} />
       <Route path="/auth/login" component={Login} />
       <Route path="/auth/register" component={Register} />
+      <Route path="/payment/success" component={PaymentSuccess} />
+
+      {/* 保護頁面 — 需要登入 */}
+      <Route path="/subjects">
+        <RequireAuth><Subjects /></RequireAuth>
+      </Route>
+      <Route path="/quiz/:subjectKey">
+        {(params) => <RequireAuth><Quiz {...params} /></RequireAuth>}
+      </Route>
+      <Route path="/quiz/:subjectKey/:tag">
+        {(params) => <RequireAuth><Quiz {...params} /></RequireAuth>}
+      </Route>
+      <Route path="/knowledge">
+        <RequireAuth><KnowledgeMap /></RequireAuth>
+      </Route>
+      <Route path="/knowledge/:tag">
+        {(params) => <RequireAuth><KnowledgeDetail {...params} /></RequireAuth>}
+      </Route>
+      <Route path="/mock-exam">
+        <RequireAuth><MockExam /></RequireAuth>
+      </Route>
+      <Route path="/results">
+        <RequireAuth><Results /></RequireAuth>
+      </Route>
+
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
