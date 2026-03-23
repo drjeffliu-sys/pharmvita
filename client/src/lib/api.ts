@@ -5,14 +5,19 @@ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const FUNCTIONS_URL = `${SUPABASE_URL}/functions/v1`;
 
 async function callFunction<T>(name: string, body?: unknown): Promise<T> {
+  // 用 getSession 取得 token
   const { data: { session } } = await supabase.auth.getSession();
+  
+  if (!session?.access_token) {
+    throw new Error("未登入，請重新登入");
+  }
 
   const res = await fetch(`${FUNCTIONS_URL}/${name}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "apikey": SUPABASE_ANON_KEY,
-      "Authorization": `Bearer ${session?.access_token ?? SUPABASE_ANON_KEY}`,
+      "Authorization": `Bearer ${session.access_token}`,
     },
     body: body ? JSON.stringify(body) : undefined,
   });
@@ -26,7 +31,7 @@ async function callFunction<T>(name: string, body?: unknown): Promise<T> {
 
 export const api = {
   createCheckout: (plan_id: "monthly" | "semiannual" | "yearly") =>
-    callFunction<{ url: string; session_id: string }>("create-checkout", { plan_id }),
+    callFunction<{ url: string }>("create-checkout", { plan_id }),
 
   loadProgress: async () => {
     const { data: { user } } = await supabase.auth.getUser();
