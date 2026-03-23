@@ -1,20 +1,22 @@
 import { supabase } from "./supabase";
 
-const FUNCTIONS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1`;
-
-async function getAuthHeader(): Promise<Record<string, string>> {
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session?.access_token) return {};
-  return { Authorization: `Bearer ${session.access_token}` };
-}
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const FUNCTIONS_URL = `${SUPABASE_URL}/functions/v1`;
 
 async function callFunction<T>(name: string, body?: unknown): Promise<T> {
-  const headers = await getAuthHeader();
+  const { data: { session } } = await supabase.auth.getSession();
+
   const res = await fetch(`${FUNCTIONS_URL}/${name}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", ...headers },
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_ANON_KEY,
+      "Authorization": `Bearer ${session?.access_token ?? SUPABASE_ANON_KEY}`,
+    },
     body: body ? JSON.stringify(body) : undefined,
   });
+
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: "網路錯誤" }));
     throw Object.assign(new Error(err.error || "Request failed"), { status: res.status });
