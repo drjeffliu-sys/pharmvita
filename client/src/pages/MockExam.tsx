@@ -15,7 +15,8 @@ import {
 import Navbar from "@/components/Navbar";
 import QuestionCard from "@/components/QuestionCard";
 import EcgLine from "@/components/EcgLine";
-import { useRandomQuestions } from "@/hooks/useQuestionBank";
+import { useRandomQuestions, useQuestionBank } from "@/hooks/useQuestionBank";
+import { useStudyProgress } from "@/hooks/useStudyProgress";
 import { SUBJECT_CONFIG, EXAM_YEARS } from "@/lib/types";
 import type { Question } from "@/lib/types";
 
@@ -74,7 +75,14 @@ export default function MockExam() {
   const [showWrongOnly, setShowWrongOnly] = useState(false);
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
+  const { progress } = useStudyProgress();
+  const { questions: allQuestions } = useQuestionBank();
   const randomQuestions = useRandomQuestions(questionCount, selectedSubjects, selectedYears);
+
+  // 所有答錯過的題目（跨科目、跨模式）
+  const allWrongQuestions = allQuestions.filter(
+    (q) => q.id in progress.correct && progress.correct[q.id] === false
+  );
 
   // 計時器
   useEffect(() => {
@@ -120,6 +128,21 @@ export default function MockExam() {
     const now = Date.now();
     setStartTime(now);
     setElapsed(0);
+    setPhase("exam");
+    setShowResumePrompt(false);
+  };
+
+  const startWrongExam = () => {
+    if (allWrongQuestions.length === 0) return;
+    // Shuffle wrong questions
+    const shuffled = [...allWrongQuestions].sort(() => Math.random() - 0.5);
+    setExamQuestions(shuffled);
+    setCurrentIndex(0);
+    setAnswers({});
+    const now = Date.now();
+    setStartTime(now);
+    setElapsed(0);
+    setTimeLimit(0); // 錯題重考不限時
     setPhase("exam");
     setShowResumePrompt(false);
   };
@@ -347,6 +370,17 @@ export default function MockExam() {
               </div>
               <p className="text-xs text-muted-foreground mt-2">已選 {selectedYears.length} / {EXAM_YEARS.length} 屆</p>
             </div>
+
+            {/* 錯題重考 */}
+            {allWrongQuestions.length > 0 && (
+              <button
+                onClick={startWrongExam}
+                className="btn-capsule w-full flex items-center justify-center gap-2 py-3.5 bg-red-500 text-white text-base"
+              >
+                <RefreshCw className="w-5 h-5" />
+                錯題重考（共 {allWrongQuestions.length} 題）
+              </button>
+            )}
 
             <button
               onClick={startExam}
