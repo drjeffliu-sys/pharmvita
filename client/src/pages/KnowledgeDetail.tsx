@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
+import { useExplanationLimit, FREE_DAILY_LIMIT } from "@/hooks/useExplanationLimit";
 import { useStudyProgress } from "@/hooks/useStudyProgress";
 import { SUBJECT_CONFIG } from "@/lib/types";
 import type { Question } from "@/lib/types";
@@ -111,6 +112,7 @@ export default function KnowledgeDetail() {
   const params = useParams<{ tag: string }>();
   const tag = decodeURIComponent(params.tag || "");
   const bank = useQuestionBank();
+  const { canViewExplanation, recordView } = useExplanationLimit();
   const { progress } = useStudyProgress();
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
   const [filterSubject, setFilterSubject] = useState<string | null>(null);
@@ -586,12 +588,19 @@ export default function KnowledgeDetail() {
                               )}
                               {/* detailed_explanation */}
                               {q.detailed_explanation?.concept_analysis && (
-                                <div className="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg">
-                                  <p className="text-[10px] font-bold text-blue-700 mb-1.5">觀念解析</p>
-                                  <p className="text-xs text-blue-900 leading-relaxed whitespace-pre-line">{q.detailed_explanation.concept_analysis}</p>
-                                </div>
+                                canViewExplanation ? (
+                                  <div className="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                                    <p className="text-[10px] font-bold text-blue-700 mb-1.5">觀念解析</p>
+                                    <p className="text-xs text-blue-900 leading-relaxed whitespace-pre-line">{q.detailed_explanation.concept_analysis}</p>
+                                  </div>
+                                ) : (
+                                  <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between">
+                                    <p className="text-xs text-amber-700">今日詳解已達上限（{FREE_DAILY_LIMIT} 題）</p>
+                                    <a href="/pricing" className="text-xs font-bold text-amber-600 hover:underline">升級無限 →</a>
+                                  </div>
+                                )
                               )}
-                              {!isCorrect && q.detailed_explanation?.wrong_options_analysis && (
+                              {!isCorrect && q.detailed_explanation?.wrong_options_analysis && canViewExplanation && (
                                 <div className="mt-2 p-3 bg-red-50 border border-red-100 rounded-lg">
                                   <p className="text-[10px] font-bold text-red-700 mb-1.5">錯誤選項分析</p>
                                   <p className="text-xs text-red-900 leading-relaxed whitespace-pre-line">{q.detailed_explanation.wrong_options_analysis}</p>

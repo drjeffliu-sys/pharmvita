@@ -211,12 +211,26 @@ export default function QuestionCard({
           {hasDetailedExplanation && (
             <div className="mb-3">
               <button
-                onClick={() => setShowExplanation(!showExplanation)}
-                className="w-full flex items-center justify-between px-4 py-3 rounded-lg bg-muted/60 border border-foreground/10 hover:bg-muted transition-colors text-sm font-medium"
+                onClick={async () => {
+                  if (showExplanation) {
+                    setShowExplanation(false);
+                    return;
+                  }
+                  if (!canViewExplanation) return;
+                  const ok = await recordView();
+                  if (ok) setShowExplanation(true);
+                }}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg border transition-colors text-sm font-medium ${
+                  canViewExplanation || showExplanation
+                    ? "bg-muted/60 border-foreground/10 hover:bg-muted"
+                    : "bg-amber-50 border-amber-200 cursor-not-allowed"
+                }`}
               >
                 <span className="flex items-center gap-2 text-foreground/70">
                   <BookOpen className="w-4 h-4" />
-                  查看詳解
+                  {canViewExplanation || showExplanation
+                    ? "查看詳解"
+                    : `今日詳解已達上限（${FREE_DAILY_LIMIT} 題）`}
                 </span>
                 {canViewExplanation || showExplanation ? (
                   showExplanation
