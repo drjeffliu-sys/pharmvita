@@ -759,10 +759,17 @@ export default function MockExam() {
                                   </span>
                                 </div>
                                 {q.detailed_explanation?.concept_analysis && (
-                                  <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                                    <p className="text-[10px] font-bold text-blue-700 mb-1">觀念解析</p>
-                                    <p className="text-xs text-blue-800 leading-relaxed whitespace-pre-line">{q.detailed_explanation.concept_analysis}</p>
-                                  </div>
+                                  canViewExplanation ? (
+                                    <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                      <p className="text-[10px] font-bold text-blue-700 mb-1">觀念解析</p>
+                                      <p className="text-xs text-blue-800 leading-relaxed whitespace-pre-line">{q.detailed_explanation.concept_analysis}</p>
+                                    </div>
+                                  ) : (
+                                    <div className="mt-3 p-3 bg-amber-50 border border-amber-200 rounded-lg flex items-center justify-between">
+                                      <p className="text-xs text-amber-700">今日詳解已達上限（{FREE_DAILY_LIMIT} 題）</p>
+                                      <a href="/pricing" className="text-xs font-bold text-amber-600 hover:underline">升級無限 →</a>
+                                    </div>
+                                  )
                                 )}
                                 <div className="mt-3 flex items-center gap-2 flex-wrap">
                                   <span className="text-[10px] text-muted-foreground">前往知識點：</span>

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 
-export const FREE_DAILY_LIMIT = 5;
+export const FREE_DAILY_LIMIT = 10;
 
 export function useExplanationLimit() {
   const { user, isSubscribed } = useAuth();

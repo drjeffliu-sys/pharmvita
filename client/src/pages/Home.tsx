@@ -74,6 +74,12 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
+                href="/pricing"
+                className="btn-capsule inline-flex items-center gap-2 px-7 py-3 bg-emerald-800/60 text-white text-sm no-underline border-emerald-700"
+              >
+                查看付費方案
+              </Link>
+              <Link
                 href="/mock-exam"
                 className="btn-capsule inline-flex items-center gap-2 px-7 py-3 bg-transparent text-white text-sm no-underline border-white/50"
               >
@@ -246,6 +252,33 @@ export default function Home() {
       </section>
 
       {/* Footer */}
+      {/* 付費方案快速入口 */}
+      <section className="py-14 border-t-[2.5px] border-foreground/10">
+        <div className="container max-w-3xl mx-auto text-center">
+          <h2 className="font-display text-2xl font-bold mb-2">無限詳解，一次解鎖</h2>
+          <p className="text-muted-foreground text-sm mb-8">免費版每天 10 題詳解 · 付費版完全無限制</p>
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            {[
+              { plan: "免費版", price: "$0", note: "每天 10 題詳解" },
+              { plan: "主力方案", price: "$399/月", note: "半年期，最多人選", highlight: true },
+              { plan: "安心包", price: "$299/月", note: "年訂閱，月費最低" },
+            ].map((p) => (
+              <div key={p.plan}
+                className={"card-brutal rounded-lg p-4 text-center" + (p.highlight ? " ring-2 ring-emerald-500" : "")}>
+                <p className="text-xs text-muted-foreground mb-1">{p.plan}</p>
+                <p className="font-display text-xl font-black">{p.price}</p>
+                <p className="text-[11px] text-muted-foreground mt-1">{p.note}</p>
+              </div>
+            ))}
+          </div>
+          <Link href="/pricing"
+            className="btn-capsule inline-flex items-center gap-2 px-8 py-3.5 bg-emerald-600 text-white text-sm no-underline">
+            查看完整方案
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
       <footer className="border-t-[2.5px] border-foreground bg-card">
         <div className="container py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
