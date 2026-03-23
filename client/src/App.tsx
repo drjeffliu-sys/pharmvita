@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import RequireAuth from "./components/RequireAuth";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ExplanationLimitProvider } from "./contexts/ExplanationLimitContext";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import Subjects from "./pages/Subjects";
@@ -62,10 +63,12 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <AuthProvider>
+          <ExplanationLimitProvider>
           <TooltipProvider>
             <Toaster />
             <Router />
           </TooltipProvider>
+          </ExplanationLimitProvider>
         </AuthProvider>
       </ThemeProvider>
     </ErrorBoundary>
