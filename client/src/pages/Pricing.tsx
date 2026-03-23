@@ -46,7 +46,7 @@ const PLANS: Plan[] = [
       "模擬考試功能",
       "學習進度本機儲存",
     ],
-    limits: ["每日詳解上限 5 次"],
+    limits: ["每日詳解上限 10 次"],
     cta: "免費開始刷題",
     isFree: true,
     psychNote: "",
