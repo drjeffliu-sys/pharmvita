@@ -27,9 +27,16 @@ serve(async (req) => {
     const authHeader = req.headers.get("Authorization");
     if (!authHeader) return new Response(JSON.stringify({ error: "未登入" }), { status: 401, headers: { ...cors, "Content-Type": "application/json" } });
 
-    const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_ANON_KEY")!);
-    const { data: { user }, error } = await supabase.auth.getUser(authHeader.replace("Bearer ", ""));
-    if (error || !user) return new Response(JSON.stringify({ error: "驗證失敗" }), { status: 401, headers: { ...cors, "Content-Type": "application/json" } });
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_ANON_KEY") ?? ""
+    );
+    const token = authHeader.replace("Bearer ", "");
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+    if (authError || !user) {
+      console.error("Auth error:", authError?.message, "token length:", token.length);
+      return new Response(JSON.stringify({ error: "驗證失敗", detail: authError?.message }), { status: 401, headers: { ...cors, "Content-Type": "application/json" } });
+    }
 
     const { plan_id } = await req.json() as { plan_id: PlanId };
     const plan = PLANS[plan_id];
