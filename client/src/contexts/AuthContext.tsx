@@ -40,6 +40,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const is_active =
       data.status === "active" &&
+      data.plan !== "free" &&
       (!data.expires_at || new Date(data.expires_at) > new Date());
 
     setSubscription({ ...data, is_active });
