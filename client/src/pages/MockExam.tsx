@@ -762,7 +762,7 @@ export default function MockExam() {
                                   {q.question}
                                 </p>
                                 <div className="space-y-2 mb-3">
-                                  {Object.entries(q.options).sort(([a], [b]) => a.localeCompare(b)).map(([key, text]) => {
+                                  {Object.entries(q.options || {}).sort(([a], [b]) => a.localeCompare(b)).map(([key, text]) => {
                                     const isCorrectOption = key === q.answer;
                                     const isUserChoice = key === userAnswer;
                                     let bg = "bg-white border-foreground/10";
