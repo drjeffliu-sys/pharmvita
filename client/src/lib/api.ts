@@ -1,18 +1,24 @@
 import { supabase } from "./supabase";
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// 直接 hardcode Supabase URL 和 anon key 作為 fallback
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://adehvxbiaqtjsmvqavgt.supabase.co";
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFkZWh2eGJpYXF0anNtdnFhdmd0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIyMDQxMjksImV4cCI6MjA1Nzc4MDEyOX0.T865HMiC1IHigInwgrh4BX3iXpoy_e7gCD-p1yTAqlU";
 const FUNCTIONS_URL = `${SUPABASE_URL}/functions/v1`;
 
 async function callFunction<T>(name: string, body?: unknown): Promise<T> {
-  // 用 getSession 取得 token
-  const { data: { session } } = await supabase.auth.getSession();
-  
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+
+  console.log("[api] session:", session?.user?.email, "error:", sessionError?.message);
+  console.log("[api] access_token prefix:", session?.access_token?.substring(0, 30));
+
   if (!session?.access_token) {
     throw new Error("未登入，請重新登入");
   }
 
-  const res = await fetch(`${FUNCTIONS_URL}/${name}`, {
+  const url = `${FUNCTIONS_URL}/${name}`;
+  console.log("[api] calling:", url);
+
+  const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,8 +28,11 @@ async function callFunction<T>(name: string, body?: unknown): Promise<T> {
     body: body ? JSON.stringify(body) : undefined,
   });
 
+  console.log("[api] response status:", res.status);
+
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: "網路錯誤" }));
+    console.log("[api] error body:", err);
     throw Object.assign(new Error(err.error || "Request failed"), { status: res.status });
   }
   return res.json();
