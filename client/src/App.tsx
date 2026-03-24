@@ -18,6 +18,8 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 function Router() {
   return (
@@ -52,6 +54,8 @@ function Router() {
         <RequireAuth><Results /></RequireAuth>
       </Route>
 
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug">{(params) => <BlogPost slug={params.slug || ""} />}</Route>
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

@@ -11,6 +11,7 @@ const navItems = [
   { href: "/knowledge", label: "知識分類", icon: Map },
   { href: "/mock-exam", label: "模擬考試", icon: ClipboardCheck },
   { href: "/results", label: "學習成果", icon: BarChart3 },
+  { href: "/blog", label: "備考攻略", icon: BookOpen },
 ];
 
 export default function Navbar() {
