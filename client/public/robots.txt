@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /payment/
+
+Sitemap: https://pharmvita.vercel.app/sitemap.xml
