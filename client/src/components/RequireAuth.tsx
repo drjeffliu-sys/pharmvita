@@ -42,7 +42,7 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
           </div>
           <h2 className="font-display text-2xl font-bold mb-2">請先登入</h2>
           <p className="text-muted-foreground text-sm mb-8">
-            用 Google 帳號登入，免費每天 5 次詳解
+            用 Google 帳號登入，免費每天 10 次詳解
           </p>
           {error && (
             <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">{error}</div>
