@@ -8,15 +8,12 @@ const FUNCTIONS_URL = `${SUPABASE_URL}/functions/v1`;
 async function callFunction<T>(name: string, body?: unknown): Promise<T> {
   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
-  console.log("[api] session:", session?.user?.email, "error:", sessionError?.message);
-  console.log("[api] access_token prefix:", session?.access_token?.substring(0, 30));
 
   if (!session?.access_token) {
     throw new Error("未登入，請重新登入");
   }
 
   const url = `${FUNCTIONS_URL}/${name}`;
-  console.log("[api] calling:", url);
 
   const res = await fetch(url, {
     method: "POST",
@@ -28,11 +25,9 @@ async function callFunction<T>(name: string, body?: unknown): Promise<T> {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  console.log("[api] response status:", res.status);
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({ error: "網路錯誤" }));
-    console.log("[api] error body:", err);
     throw Object.assign(new Error(err.error || "Request failed"), { status: res.status });
   }
   return res.json();
