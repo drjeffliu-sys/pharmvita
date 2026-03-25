@@ -63,7 +63,7 @@ export default function Quiz() {
       default:
         return shuffledBase;
     }
-  }, [shuffledBase, filterMode, progress]);
+  }, [shuffledBase, filterMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const currentQuestion = displayQuestions[currentIndex];
 
