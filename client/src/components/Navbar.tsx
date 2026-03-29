@@ -104,7 +104,7 @@ export default function Navbar() {
                             <Crown className="w-4 h-4" />
                             升級付費方案
                           </Link>
-                        )}}
+                        )}
                         <button onClick={handleSignOut}
                           className="w-full flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors text-left">
                           <LogOut className="w-4 h-4" />
