@@ -96,6 +96,7 @@ export default function Navbar() {
                           <p className="text-xs text-muted-foreground">登入為</p>
                           <p className="text-sm font-medium truncate">{user.email}</p>
                           <p className={`text-xs mt-0.5 font-medium ${isSubscribed ? "text-amber-600" : "text-muted-foreground"}`}>
+                            {isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）"}
                           </p>
                         </div>
                         {!isSubscribed && (
