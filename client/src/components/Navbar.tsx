@@ -1,14 +1,9 @@
-import {!FREE_MODE && { FREE_MODE } from '../lib/config';
+import { FREE_MODE } from '../lib/config';
 import { Link, useLocation } from "wouter";
-import { FREE_MODE } from '../lib/config';
 import { Menu, X, Pill, BookOpen, Map, ClipboardCheck, BarChart3, Crown, LogOut, User } from "lucide-react";
-import { FREE_MODE } from '../lib/config';
 import { supabase } from "@/lib/supabase";
-import { FREE_MODE } from '../lib/config';
 import { useState } from "react";
-import { FREE_MODE } from '../lib/config';
 import { motion, AnimatePresence } from "framer-motion";
-import { FREE_MODE } from '../lib/config';
 import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
@@ -101,7 +96,6 @@ export default function Navbar() {
                           <p className="text-xs text-muted-foreground">登入為</p>
                           <p className="text-sm font-medium truncate">{user.email}</p>
                           <p className={`text-xs mt-0.5 font-medium ${isSubscribed ? "text-amber-600" : "text-muted-foreground"}`}>
-                            {!FREE_MODE && (isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）")}
                           </p>
                         </div>
                         {!isSubscribed && (
