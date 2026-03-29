@@ -5,6 +5,7 @@
  * - Subject cards with thick borders and shadow offsets
  * - Capsule-shaped CTAs
  */
+import { FREE_MODE } from '../lib/config';
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import {
@@ -253,6 +254,7 @@ export default function Home() {
 
       {/* Footer */}
       {/* 付費方案快速入口 */}
+{!FREE_MODE && <>
       <section className="py-14 border-t-[2.5px] border-foreground/10">
         <div className="container max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl font-bold mb-2">無限詳解，一次解鎖</h2>

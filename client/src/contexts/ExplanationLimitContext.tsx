@@ -1,5 +1,8 @@
+import { FREE_MODE } from '../lib/config';
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { FREE_MODE } from '../lib/config';
 import { useAuth } from "@/contexts/AuthContext";
+import { FREE_MODE } from '../lib/config';
 import { api } from "@/lib/api";
 
 export const FREE_DAILY_LIMIT = 10;
@@ -36,8 +39,8 @@ export function ExplanationLimitProvider({ children }: { children: React.ReactNo
       .catch(() => setInitialized(true));
   }, [user, isSubscribed]);
 
-  const canViewExplanation = isSubscribed || !initialized || usedToday < FREE_DAILY_LIMIT;
-  const remaining = isSubscribed ? Infinity : Math.max(0, FREE_DAILY_LIMIT - usedToday);
+  const canViewExplanation = FREE_MODE ? true : (isSubscribed || !initialized || usedToday < FREE_DAILY_LIMIT);
+  const remaining = (FREE_MODE || isSubscribed) ? Infinity : Math.max(0, FREE_DAILY_LIMIT - usedToday);
 
   const recordView = useCallback(async (): Promise<boolean> => {
     if (isSubscribed || !user) return true;

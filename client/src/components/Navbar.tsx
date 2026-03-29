@@ -1,8 +1,14 @@
+import {!FREE_MODE && { FREE_MODE } from '../lib/config';
 import { Link, useLocation } from "wouter";
+import { FREE_MODE } from '../lib/config';
 import { Menu, X, Pill, BookOpen, Map, ClipboardCheck, BarChart3, Crown, LogOut, User } from "lucide-react";
+import { FREE_MODE } from '../lib/config';
 import { supabase } from "@/lib/supabase";
+import { FREE_MODE } from '../lib/config';
 import { useState } from "react";
+import { FREE_MODE } from '../lib/config';
 import { motion, AnimatePresence } from "framer-motion";
+import { FREE_MODE } from '../lib/config';
 import { useAuth } from "@/contexts/AuthContext";
 
 const navItems = [
@@ -95,7 +101,7 @@ export default function Navbar() {
                           <p className="text-xs text-muted-foreground">登入為</p>
                           <p className="text-sm font-medium truncate">{user.email}</p>
                           <p className={`text-xs mt-0.5 font-medium ${isSubscribed ? "text-amber-600" : "text-muted-foreground"}`}>
-                            {isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）"}
+                            {!FREE_MODE && (isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）")}
                           </p>
                         </div>
                         {!isSubscribed && (
@@ -104,7 +110,7 @@ export default function Navbar() {
                             <Crown className="w-4 h-4" />
                             升級付費方案
                           </Link>
-                        )}
+                        )}}
                         <button onClick={handleSignOut}
                           className="w-full flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors text-left">
                           <LogOut className="w-4 h-4" />

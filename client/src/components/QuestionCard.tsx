@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import type { Question } from "@/lib/types";
 import { useExplanationLimit, FREE_DAILY_LIMIT } from "@/hooks/useExplanationLimit";
+import { FREE_MODE } from "@/lib/config";
 import { Link as WouterLink } from "wouter";
 
 interface QuestionCardProps {
@@ -232,7 +233,7 @@ export default function QuestionCard({
                     ? "查看詳解"
                     : `今日詳解已達上限（${FREE_DAILY_LIMIT} 題）`}
                 </span>
-                {canViewExplanation || showExplanation ? (
+                {(FREE_MODE || canViewExplanation || showExplanation) ? (
                   showExplanation
                     ? <ChevronUp className="w-4 h-4 text-muted-foreground" />
                     : <ChevronDown className="w-4 h-4 text-muted-foreground" />
