@@ -280,6 +280,8 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      </>
+      }
 
       <footer className="border-t-[2.5px] border-foreground bg-card">
         <div className="container py-8">
