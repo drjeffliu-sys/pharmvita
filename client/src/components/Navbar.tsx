@@ -100,11 +100,13 @@ export default function Navbar() {
                           </p>
                         </div>
                         {!isSubscribed && (
+{!FREE_MODE && (
                           <Link href="/pricing" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-2 px-4 py-3 text-sm text-amber-600 font-medium hover:bg-amber-50 no-underline transition-colors">
                             <Crown className="w-4 h-4" />
                             升級付費方案
                           </Link>
+)}
                         )}
                         <button onClick={handleSignOut}
                           className="w-full flex items-center gap-2 px-4 py-3 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors text-left">
@@ -169,6 +171,7 @@ export default function Navbar() {
                   <>
                     <div className="px-4 py-2 text-xs text-muted-foreground">{user.email}</div>
                     {!isSubscribed && (
+{!FREE_MODE && (
                       <Link href="/pricing" onClick={() => setMobileOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-amber-600 hover:bg-amber-50 no-underline">
                         <Crown className="w-5 h-5" />升級付費方案
@@ -190,10 +193,13 @@ export default function Navbar() {
                       className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-emerald-700 hover:bg-emerald-50 no-underline">
                       <Crown className="w-5 h-5" />查看付費方案
                     </Link>
+)}
+{!FREE_MODE && (
                     <Link href="/pricing" onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-emerald-700 hover:bg-emerald-50 no-underline">
                       <Crown className="w-5 h-5" />查看付費方案
                     </Link>
+)}
                   </>
                 )}
               </div>

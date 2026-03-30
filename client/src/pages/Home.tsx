@@ -74,12 +74,14 @@ export default function Home() {
                 開始刷題
                 <ArrowRight className="w-4 h-4" />
               </Link>
+{!FREE_MODE && (
               <Link
                 href="/pricing"
                 className="btn-capsule inline-flex items-center gap-2 px-7 py-3 bg-emerald-800/60 text-white text-sm no-underline border-emerald-700"
               >
                 查看付費方案
               </Link>
+)}
               <Link
                 href="/mock-exam"
                 className="btn-capsule inline-flex items-center gap-2 px-7 py-3 bg-transparent text-white text-sm no-underline border-white/50"
