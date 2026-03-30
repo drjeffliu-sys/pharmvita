@@ -99,7 +99,7 @@ export default function Navbar() {
                             {!FREE_MODE && (isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）")}
                           </p>
                         </div>
-                        {!isSubscribed && (
+                        {!isSubscribed && !FREE_MODE && (
                           <Link href="/pricing" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-2 px-4 py-3 text-sm text-amber-600 font-medium hover:bg-amber-50 no-underline transition-colors">
                             <Crown className="w-4 h-4" />
