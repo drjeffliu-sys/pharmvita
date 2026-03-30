@@ -256,7 +256,7 @@ export default function Home() {
 
       {/* Footer */}
       {/* 付費方案快速入口 */}
-      <section className="py-14 border-t-[2.5px] border-foreground/10">
+      {!FREE_MODE && <section className="py-14 border-t-[2.5px] border-foreground/10">
         <div className="container max-w-3xl mx-auto text-center">
           <h2 className="font-display text-2xl font-bold mb-2">無限詳解，一次解鎖</h2>
           <p className="text-muted-foreground text-sm mb-8">免費版每天 10 題詳解 · 付費版完全無限制</p>
