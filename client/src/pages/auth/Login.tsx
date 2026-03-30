@@ -39,7 +39,7 @@ export default function Login() {
         <div className="card-brutal bg-card rounded-lg p-8 text-center">
           <h1 className="font-display text-2xl font-bold mb-2">開始使用</h1>
           <p className="text-sm text-muted-foreground mb-8">
-            用 Google 帳號登入，免費每天 5 次詳解
+            用 Google 帳號登入
           </p>
 
           {error && (
