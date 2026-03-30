@@ -99,8 +99,7 @@ export default function Navbar() {
                             {isSubscribed ? "✓ 付費會員" : "免費版（每天 10 題詳解）"}
                           </p>
                         </div>
-                        {!isSubscribed && (
-{!FREE_MODE && (
+                        {!isSubscribed && !FREE_MODE && (
                           <Link href="/pricing" onClick={() => setUserMenuOpen(false)}
                             className="flex items-center gap-2 px-4 py-3 text-sm text-amber-600 font-medium hover:bg-amber-50 no-underline transition-colors">
                             <Crown className="w-4 h-4" />
@@ -170,8 +169,7 @@ export default function Navbar() {
                 {user ? (
                   <>
                     <div className="px-4 py-2 text-xs text-muted-foreground">{user.email}</div>
-                    {!isSubscribed && (
-{!FREE_MODE && (
+                    {!isSubscribed && !FREE_MODE && (
                       <Link href="/pricing" onClick={() => setMobileOpen(false)}
                         className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-amber-600 hover:bg-amber-50 no-underline">
                         <Crown className="w-5 h-5" />升級付費方案
